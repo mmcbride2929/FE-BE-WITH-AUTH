@@ -1,4 +1,5 @@
-download postman
-upload project to git
+- finish controller with legit responses
 
--rename routes/controllers to something more specific to project
+- connect to db
+
+- begin creating user modal
