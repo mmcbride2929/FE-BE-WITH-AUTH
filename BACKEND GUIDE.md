@@ -33,3 +33,14 @@ intialize router & kick off simple get req
 -export them all as object
 -import methods from controller to router.. get/post/put/delete
 -test routes with postman
+
+# Middleware
+
+- add express's Json middleware to server
+- add urlencoded middleware
+
+# Error Handling
+
+- check for request body and controller
+- throw new error if not present
+- create middleware folder
