@@ -27,11 +27,15 @@ date
 creator
 likes
 
+- throw err when user enters string and not number for length and weight
+
 # home feed
 
 - create a create post button that forwards YouTube create post page
 
 # single post
+
+- api should direct to just /post/id not /posts/id/ for single item
 
 # sign in / sign up
 

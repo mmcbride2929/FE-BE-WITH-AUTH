@@ -4,6 +4,7 @@ const port = process.env.PORT || 5000
 
 const postRoutes = require('./routes/postRoutes')
 const { errorHandler } = require('./middleware/errorMiddleware')
+const connectDB = require('./config/db')
 
 // initiating app
 const app = express()
@@ -18,6 +19,15 @@ app.use('/api/v1/posts', postRoutes)
 // overwriting express default error handler
 app.use(errorHandler)
 
-app.listen(port, () => {
-  console.log(`running on port ${port}`)
-})
+const start = async () => {
+  try {
+    await connectDB(process.env.MONGO_URI)
+    app.listen(port, () => {
+      console.log(`running on port ${port}`)
+    })
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+start()
