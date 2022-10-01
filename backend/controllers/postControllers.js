@@ -17,6 +17,12 @@ const getPost = asyncHandler(async (req, res) => {
 // GET - /api/v1/posts
 const getPosts = asyncHandler(async (req, res) => {
   const posts = await Post.find()
+
+  if (!posts) {
+    res.status(400)
+    throw new Error('No matching posts were found')
+  }
+
   res.status(200).json(posts)
 })
 
