@@ -41,6 +41,23 @@ intialize router & kick off simple get req
 
 # Error Handling
 
-- check for request body and controller
+- check for request body in controller
+- check for duplicate email
 - throw new error if not present
 - create middleware folder
+
+# hashing password
+
+- install bcrypt
+- add pre save hook after user schema
+- hash password
+
+# jwt
+
+- create createjwt method within schema in model
+- create token and controller
+- create jwt secret
+- setback token to the front end along with user
+- remove password from user being returned to the front end
+
+# create front end
