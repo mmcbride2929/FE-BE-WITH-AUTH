@@ -61,3 +61,8 @@ intialize router & kick off simple get req
 - remove password from user being returned to the front end
 
 # create front end
+
+- remove app.css, app.test, logo, report web, setupTest
+- fix app.js and index.js
+- changed title in public/index.html
+- replace favicon.ico and public
