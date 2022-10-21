@@ -25,8 +25,30 @@ const register = asyncHandler(async (req, res) => {
 })
 
 const login = asyncHandler(async (req, res) => {
-  res.status(200).send('login')
+  const { password, email } = req.body
+
+  if (!email || !password) {
+    throw new Error('Please provide all values')
+  }
+
+  // find user by email and include password
+  const user = await User.findOne({ email }).select('+password')
+
+  if (!user) {
+    throw new Error('Invalid Credentials')
+  }
+
+  const isPasswordCorrect = await user.comparePassword(password)
+  if (!isPasswordCorrect) {
+    throw new Error('Invalid Credentials')
+  }
+
+  const token = user.createJWT()
+
+  user.password = undefined
+  res.status(StatusCodes.OK).json({ user, token })
 })
+
 const updateUser = asyncHandler(async (req, res) => {
   res.status(200).send('update user')
 })

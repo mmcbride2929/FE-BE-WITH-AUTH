@@ -66,3 +66,9 @@ intialize router & kick off simple get req
 - fix app.js and index.js
 - changed title in public/index.html
 - replace favicon.ico and public
+
+# create proxy to limit api access to our frontend only
+
+# register user functionality
+
+# login user functionality

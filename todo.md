@@ -1,18 +1,9 @@
 # currently working on
 
-- finish controller with legit responses
-- connect to db
-- begin creating user modal
 
-  # questions
+- if user and on page load fetch and display thee current posts
 
-- where do we store the users likes and their posts?
-- do we have multiple collections within the user cluster?
-- how do we request to see a user's likes in posts when visiting their profile?
-
-# auth
-
-- be able to login with Facebook and google
+# questions
 
 # create post
 
@@ -31,7 +22,7 @@ likes
 
 # home feed
 
-- create a create post button that forwards YouTube create post page
+- create a create post button that forwards to create post page
 
 # single post
 
@@ -39,7 +30,14 @@ likes
 
 # sign in / sign up
 
-- default page if not logged in
+- add login function to register page when users register
+- add local storage to login function
+- add alerts with form validation (video 28-35)
+- delete required on inputs and use real alerts
+
+# landing page
+
+-- default page if not logged in
 
 # my profile
 

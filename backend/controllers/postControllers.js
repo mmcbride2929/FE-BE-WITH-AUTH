@@ -37,7 +37,7 @@ const createPost = asyncHandler(async (req, res) => {
   res.status(200).json(post)
 })
 
-// PUT - /api/v1/posts/:id
+// PATCH - /api/v1/posts/:id
 const updatePost = asyncHandler(async (req, res) => {
   const post = await Post.findById(req.params.id)
 

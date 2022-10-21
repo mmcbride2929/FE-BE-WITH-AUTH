@@ -8,7 +8,8 @@ import Register from './pages/Register'
 import Navbar from './components/Navbar/Navbar'
 import Footer from './components/Footer/Footer'
 import Error from './pages/Error'
-import Dashboard from './pages/Dashboard'
+import Feed from './pages/Feed'
+import ProtectedRoute from './pages/ProtectedRoute'
 
 const App = () => {
   return (
@@ -17,7 +18,23 @@ const App = () => {
         <BrowserRouter>
           <Navbar />
           <Routes>
-            <Route path="/" element={<Dashboard />} />
+            <Route
+              path="/"
+              element={
+                <ProtectedRoute>
+                  <Feed />
+                </ProtectedRoute>
+              }
+            />
+            <Route
+              path="/feed"
+              element={
+                <ProtectedRoute>
+                  <Feed />
+                </ProtectedRoute>
+              }
+            />
+
             <Route path="/landing" element={<Landing />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
