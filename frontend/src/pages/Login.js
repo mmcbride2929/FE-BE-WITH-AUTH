@@ -130,9 +130,8 @@ const Login = () => {
                     bg: 'brand.300',
                   }}
                   color={'white'}
-                >
-                  Sign in
-                </Button>
+                ></Button>
+                Sign in
               </Stack>
             </form>
             <Stack pt={6}>

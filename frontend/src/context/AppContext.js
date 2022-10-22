@@ -30,6 +30,9 @@ export const initialState = {
 export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
 
+  // toggle between feed page interface
+  const [hidePosts, setHidePosts] = useState(false)
+
   /* ******** functions ******** */
   const displayAlert = () => {
     dispatch({ type: DISPLAY_ALERT })
@@ -72,7 +75,7 @@ export const AppProvider = ({ children }) => {
         'http://localhost:2121/api/v1/auth/login',
         currentUser
       )
-      
+
       const { user, token } = response.data
       console.log(user)
       console.log(token)
@@ -109,6 +112,8 @@ export const AppProvider = ({ children }) => {
         displayAlert,
         clearAlert,
         loginUser,
+        hidePosts,
+        setHidePosts,
       }}
     >
       {children}

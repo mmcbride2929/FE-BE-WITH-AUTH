@@ -9,7 +9,3 @@ const Post = ({ post }) => {
   )
 }
 export default Post
-
-// ingest props and destructure the object
-// import chakra
-// display the properties

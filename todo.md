@@ -1,7 +1,7 @@
 # currently working on
 
-
-- if user and on page load fetch and display thee current posts
+- make post and feeds in the same interface and interchange them.
+- sign in page is automatically routing to the feed wind logged in after two seconds
 
 # questions
 

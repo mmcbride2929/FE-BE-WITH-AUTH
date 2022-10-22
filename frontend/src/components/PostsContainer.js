@@ -30,6 +30,3 @@ const PostsContainer = () => {
   )
 }
 export default PostsContainer
-
-// map the data into a single post
-// pass props to post
