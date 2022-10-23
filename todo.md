@@ -1,6 +1,6 @@
 # currently working on
 
-- make post and feeds in the same interface and interchange them.
+- create upload photo button & integrate leons photo hosting site
 - sign in page is automatically routing to the feed wind logged in after two seconds
 - do we need to give posts userID so we can get their posts
 

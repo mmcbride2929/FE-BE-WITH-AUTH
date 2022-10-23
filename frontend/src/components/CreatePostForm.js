@@ -103,10 +103,3 @@ const CreatePostForm = () => {
   )
 }
 export default CreatePostForm
-
-// create corresponding inputs
-// create local state for all the inputs
-// create onsubmit function/ button
-// create post request
-// make test cases
-// make error messages with reducer

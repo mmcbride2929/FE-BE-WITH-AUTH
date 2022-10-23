@@ -1,4 +1,5 @@
-import { Button } from '@chakra-ui/react'
+import { IconButton } from '@chakra-ui/react'
+import { ArrowBackIcon } from '@chakra-ui/icons'
 import AppContext from '../context/AppContext'
 import { useContext } from 'react'
 import CreatePostForm from './CreatePostForm'
@@ -6,22 +7,20 @@ const CreatePostInterface = () => {
   const { hidePosts, setHidePosts } = useContext(AppContext)
   return (
     <div>
-      <Button
+      <IconButton
         onClick={() => setHidePosts(!hidePosts)}
-        size="lg"
+        variant="outline"
         color={'white'}
-        bg={'brand.200'}
+        bg="brand.300"
+        fontSize="20px"
         _hover={{
-          bg: 'brand.300',
+          color: 'brand.300',
+          bg: 'white',
         }}
-      >
-        Go Back
-      </Button>
+        icon={<ArrowBackIcon />}
+      />
       <CreatePostForm />
     </div>
   )
 }
 export default CreatePostInterface
-
-// create onchange function
-// create a
