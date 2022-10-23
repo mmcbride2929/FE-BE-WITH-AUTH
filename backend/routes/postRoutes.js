@@ -10,7 +10,7 @@ const {
 } = require('../controllers/postControllers')
 const authenticateUser = require('../middleware/authenticateUser')
 
-router.route('/').get(getPosts).post(authenticateUser, createPost)
+router.route('/').get(getPosts).post(createPost)
 router
   .route('/:id')
   .get(getPost)

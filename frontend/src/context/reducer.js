@@ -7,6 +7,8 @@ import {
   LOGIN_USER_BEGIN,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_ERROR,
+  CREATE_POST_ERROR,
+  CREATE_POST_SUCCESS,
 } from './actions'
 
 const reducer = (state, action) => {
@@ -80,6 +82,24 @@ const reducer = (state, action) => {
     return {
       ...state,
       isLoading: false,
+      showAlert: true,
+      alertType: 'danger',
+      alertText: action.payload.msg,
+    }
+  }
+
+  if (action.type === CREATE_POST_SUCCESS) {
+    return {
+      ...state,
+      showAlert: true,
+      alertType: 'success',
+      alertText: 'Post Created',
+    }
+  }
+
+  if (action.type === LOGIN_USER_ERROR) {
+    return {
+      ...state,
       showAlert: true,
       alertType: 'danger',
       alertText: action.payload.msg,

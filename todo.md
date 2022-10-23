@@ -2,6 +2,7 @@
 
 - make post and feeds in the same interface and interchange them.
 - sign in page is automatically routing to the feed wind logged in after two seconds
+- do we need to give posts userID so we can get their posts
 
 # questions
 

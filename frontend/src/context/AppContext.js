@@ -10,6 +10,8 @@ import {
   LOGIN_USER_BEGIN,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_ERROR,
+  CREATE_POST_SUCCESS,
+  CREATE_POST_ERROR,
 } from './actions'
 import reducer from './reducer'
 
@@ -94,6 +96,22 @@ export const AppProvider = ({ children }) => {
     clearAlert()
   }
 
+  const createPost = async (post) => {
+    try {
+      await axios.post('http://localhost:2121/api/v1/posts', post)
+
+      dispatch({
+        type: CREATE_POST_SUCCESS,
+      })
+    } catch (error) {
+      dispatch({
+        type: CREATE_POST_ERROR,
+        payload: { msg: error.response.data.msg },
+      })
+    }
+    clearAlert()
+  }
+
   const addUserToLocalStorage = ({ user, token }) => {
     localStorage.setItem('user', JSON.stringify(user))
     localStorage.setItem('token', token)
@@ -114,6 +132,7 @@ export const AppProvider = ({ children }) => {
         loginUser,
         hidePosts,
         setHidePosts,
+        createPost,
       }}
     >
       {children}

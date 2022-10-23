@@ -22,3 +22,6 @@ const CreatePostInterface = () => {
   )
 }
 export default CreatePostInterface
+
+// create onchange function
+// create a

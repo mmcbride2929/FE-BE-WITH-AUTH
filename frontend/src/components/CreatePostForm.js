@@ -1,13 +1,33 @@
 import { Button, FormControl, FormLabel, Input } from '@chakra-ui/react'
+import { useContext, useState } from 'react'
+import AppContext from '../context/AppContext'
+
+const initialState = {
+  species: '',
+  photo: '',
+  bait: '',
+  location: '',
+  length: null,
+  weight: null,
+}
 
 const CreatePostForm = () => {
+  // form values
+  const [values, setValues] = useState(initialState)
+  const { showAlert, alertText, createPost } = useContext(AppContext)
+
   const handleChange = (e) => {
-    console.log(e.target.value)
+    setValues({ ...values, [e.target.name]: e.target.value })
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    createPost(values)
   }
 
   return (
     <>
-      <form>
+      <form onSubmit={handleSubmit}>
         <FormControl isRequired>
           <FormLabel>Species</FormLabel>
           <Input
@@ -66,7 +86,7 @@ const CreatePostForm = () => {
           placeholder="Enter weight"
           value={null}
         />
-
+        {showAlert ? <p>{alertText}</p> : ''}
         <Button
           type="submit"
           size="lg"
