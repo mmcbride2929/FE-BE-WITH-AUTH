@@ -7,8 +7,8 @@ const initialState = {
   photo: '',
   bait: '',
   location: '',
-  length: null,
-  weight: null,
+  length: 0,
+  weight: 0,
 }
 
 const CreatePostForm = () => {
@@ -23,6 +23,8 @@ const CreatePostForm = () => {
   const handleSubmit = (e) => {
     e.preventDefault()
     createPost(values)
+    e.target.reset()
+    setValues(initialState)
   }
 
   return (
@@ -35,7 +37,7 @@ const CreatePostForm = () => {
             onChange={handleChange}
             type="string"
             placeholder="Enter species"
-            value={null}
+            value={values.species}
           />
         </FormControl>
         <FormControl isRequired>
@@ -45,7 +47,7 @@ const CreatePostForm = () => {
             onChange={handleChange}
             type="string"
             placeholder="Upload photo"
-            value={null}
+            value={values.photo}
           />
         </FormControl>
 
@@ -56,7 +58,7 @@ const CreatePostForm = () => {
             onChange={handleChange}
             type="string"
             placeholder="Enter bait"
-            value={null}
+            value={values.bait}
           />
         </FormControl>
 
@@ -66,7 +68,7 @@ const CreatePostForm = () => {
           onChange={handleChange}
           type="string"
           placeholder="Enter location"
-          value={null}
+          value={values.location}
         />
 
         <FormLabel>Length</FormLabel>
@@ -75,7 +77,7 @@ const CreatePostForm = () => {
           onChange={handleChange}
           type="number"
           placeholder="Enter length"
-          value={null}
+          value={values.length}
         />
 
         <FormLabel>Weight</FormLabel>
@@ -84,7 +86,7 @@ const CreatePostForm = () => {
           onChange={handleChange}
           type="number"
           placeholder="Enter weight"
-          value={null}
+          value={values.weight}
         />
         {showAlert ? <p>{alertText}</p> : ''}
         <Button
