@@ -1,5 +1,5 @@
 import { Button, FormControl, FormLabel, Input } from '@chakra-ui/react'
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import AppContext from '../context/AppContext'
 
 const initialState = {
@@ -9,19 +9,26 @@ const initialState = {
   location: '',
   length: 0,
   weight: 0,
+  createdBy: '',
 }
 
 const CreatePostForm = () => {
   // form values
   const [values, setValues] = useState(initialState)
-  const { showAlert, alertText, createPost } = useContext(AppContext)
+  const { showAlert, alertText, createPost, user } = useContext(AppContext)
 
   const handleChange = (e) => {
     setValues({ ...values, [e.target.name]: e.target.value })
   }
 
+  // setting user id to state
+  useEffect(() => {
+    setValues((prevState) => ({ ...prevState, createdBy: user._id }))
+  }, [])
+
   const handleSubmit = (e) => {
     e.preventDefault()
+    console.log(values)
     createPost(values)
     e.target.reset()
     setValues(initialState)

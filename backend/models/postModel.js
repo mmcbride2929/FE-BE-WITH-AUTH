@@ -8,8 +8,8 @@ const postSchema = mongoose.Schema(
     location: String,
     length: Number,
     weight: Number,
-
     likes: { type: Number, default: 0 },
+    createdBy: { type: String, required: [true, 'No user-ID entered'] },
   },
   { timestamps: true }
 )

@@ -1,8 +1,12 @@
 # currently working on
 
+
+
+- if current user matches any posts with same id, conditionally render edit/delete btn
+
 - create upload photo button & integrate leons photo hosting site
-- sign in page is automatically routing to the feed wind logged in after two seconds
-- do we need to give posts userID so we can get their posts
+- logout functionality
+- conditionally render sign in / sign out depending on if logged in
 
 # questions
 
