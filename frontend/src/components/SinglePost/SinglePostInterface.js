@@ -1,12 +1,9 @@
-import { useContext } from 'react'
-import AppContext from '../context/AppContext'
-import EditPostInterface from './EditPostInterface'
-import SinglePostInterface from './SinglePostInterface'
+import SinglePost from './SinglePost'
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
-const PostInterfaceContainer = () => {
+const SinglePostInterface = () => {
   const [post, setPost] = useState([])
   const [loading, setLoading] = useState(true)
 
@@ -29,6 +26,6 @@ const PostInterfaceContainer = () => {
     setLoading(false)
   }, [])
 
-  return <>{!loading ? <SinglePostInterface post={post} /> : <>Loading</>}</>
+  return <>{!loading ? <SinglePost post={post} /> : <>Loading</>}</>
 }
-export default PostInterfaceContainer
+export default SinglePostInterface

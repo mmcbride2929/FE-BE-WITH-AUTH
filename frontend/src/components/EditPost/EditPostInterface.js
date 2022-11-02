@@ -1,4 +1,4 @@
-import EditPostForm from './EditPost/EditPostForm'
+import EditPostForm from './EditPostForm'
 
 const EditPostInterface = () => {
   return (

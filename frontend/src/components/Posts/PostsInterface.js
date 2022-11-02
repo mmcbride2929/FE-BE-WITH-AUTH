@@ -1,9 +1,10 @@
 import { useContext } from 'react'
-import AppContext from '../context/AppContext'
-import PostsContainer from './PostsContainer'
-import { Button } from '@chakra-ui/react'
 
-const PostInterface = () => {
+import Posts from '../Posts/Posts'
+import { Button } from '@chakra-ui/react'
+import AppContext from '../../context/AppContext'
+
+const PostsInterface = () => {
   const { hidePosts, setHidePosts } = useContext(AppContext)
   return (
     <div>
@@ -18,8 +19,8 @@ const PostInterface = () => {
       >
         Create
       </Button>
-      <PostsContainer />
+      <Posts />
     </div>
   )
 }
-export default PostInterface
+export default PostsInterface

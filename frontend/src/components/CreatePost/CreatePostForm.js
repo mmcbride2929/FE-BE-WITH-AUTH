@@ -1,6 +1,6 @@
 import { Button, FormControl, FormLabel, Input } from '@chakra-ui/react'
 import { useContext, useEffect, useState } from 'react'
-import AppContext from '../context/AppContext'
+import AppContext from '../../context/AppContext'
 
 const initialState = {
   species: '',

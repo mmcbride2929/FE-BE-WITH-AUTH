@@ -1,10 +1,12 @@
 import { IconButton } from '@chakra-ui/react'
 import { ArrowBackIcon } from '@chakra-ui/icons'
-import AppContext from '../context/AppContext'
+import AppContext from '../../context/AppContext'
 import { useContext } from 'react'
 import CreatePostForm from './CreatePostForm'
+
 const CreatePostInterface = () => {
   const { hidePosts, setHidePosts } = useContext(AppContext)
+
   return (
     <div>
       <IconButton

@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useEffect, useState } from 'react'
 import Post from './Post'
 
-const PostsContainer = () => {
+const Posts = () => {
   const [posts, setPosts] = useState([])
   const [loading, setLoading] = useState(true)
 
@@ -29,4 +29,4 @@ const PostsContainer = () => {
     </div>
   )
 }
-export default PostsContainer
+export default Posts

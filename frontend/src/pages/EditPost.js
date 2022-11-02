@@ -1,4 +1,4 @@
-import EditPostInterface from '../components/EditPostInterface'
+import EditPostInterface from '../components/EditPost/EditPostInterface'
 
 const EditPost = () => {
   return (

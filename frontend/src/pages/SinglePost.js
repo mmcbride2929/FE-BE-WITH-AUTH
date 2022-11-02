@@ -1,8 +1,8 @@
 import { useNavigate } from 'react-router-dom'
 import { IconButton } from '@chakra-ui/react'
 import { ArrowBackIcon, DeleteIcon, EditIcon } from '@chakra-ui/icons'
+import SinglePostInterface from '../components/SinglePost/SinglePostInterface'
 import { useLocation } from 'react-router-dom'
-import PostInterfaceContainer from '../components/PostInterfaceContainer'
 
 const SinglePost = () => {
   const navigate = useNavigate()
@@ -51,7 +51,7 @@ const SinglePost = () => {
         icon={<DeleteIcon />}
       />
 
-      <PostInterfaceContainer />
+      <SinglePostInterface />
     </div>
   )
 }

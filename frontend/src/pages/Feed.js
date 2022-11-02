@@ -1,16 +1,15 @@
 import { useContext } from 'react'
-import CreatePostInterface from '../components/CreatePostInterface'
-import PostInterface from '../components/PostInterface'
+import CreatePostInterface from '../components/CreatePost/CreatePostInterface'
+import PostsInterface from '../components/Posts/PostsInterface'
 import AppContext from '../context/AppContext'
 
-
 const Feed = () => {
-  const { hidePosts, setHidePosts } = useContext(AppContext)
+  const { hidePosts } = useContext(AppContext)
 
   return (
     <div>
       <div className="dashboard-interface">
-        {!hidePosts ? <PostInterface /> : <CreatePostInterface />}
+        {!hidePosts ? <PostsInterface /> : <CreatePostInterface />}
       </div>
     </div>
   )
