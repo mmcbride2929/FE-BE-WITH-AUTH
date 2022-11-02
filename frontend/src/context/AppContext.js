@@ -12,6 +12,8 @@ import {
   LOGIN_USER_ERROR,
   CREATE_POST_SUCCESS,
   CREATE_POST_ERROR,
+  UPDATE_POST_SUCCESS,
+  UPDATE_POST_ERROR,
 } from './actions'
 import reducer from './reducer'
 
@@ -32,8 +34,11 @@ export const initialState = {
 export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
 
-  // toggle between feed page interface
+  // toggle between feed page interface and create post interface
   const [hidePosts, setHidePosts] = useState(false)
+
+  // toggle to make post editable
+  const [postEditMode, setPostEditMode] = useState(false)
 
   /* ******** functions ******** */
   const displayAlert = () => {
@@ -81,6 +86,7 @@ export const AppProvider = ({ children }) => {
       const { user, token } = response.data
       console.log(user)
       console.log(token)
+      console.log('berries')
       dispatch({
         type: LOGIN_USER_SUCCESS,
         payload: { user, token },
@@ -112,6 +118,22 @@ export const AppProvider = ({ children }) => {
     clearAlert()
   }
 
+  const updatePost = async (post, path) => {
+    try {
+      await axios.patch(`http://localhost:2121/api/v1/posts/${path}`, post)
+
+      dispatch({
+        type: UPDATE_POST_SUCCESS,
+      })
+    } catch (error) {
+      dispatch({
+        type: UPDATE_POST_ERROR,
+        payload: { msg: error.response.data.msg },
+      })
+    }
+    clearAlert()
+  }
+
   const addUserToLocalStorage = ({ user, token }) => {
     localStorage.setItem('user', JSON.stringify(user))
     localStorage.setItem('token', token)
@@ -133,6 +155,9 @@ export const AppProvider = ({ children }) => {
         hidePosts,
         setHidePosts,
         createPost,
+        updatePost,
+        postEditMode,
+        setPostEditMode,
       }}
     >
       {children}

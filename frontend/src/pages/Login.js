@@ -40,14 +40,14 @@ const Login = () => {
 
   const onSubmit = (e) => {
     e.preventDefault()
-    const { email, password } = values
+    const { email, password, _id } = values
 
     if (!email || !password) {
       displayAlert()
       return
     }
 
-    const currentUser = { email, password }
+    const currentUser = { email, password, _id }
     loginUser(currentUser)
   }
 
@@ -130,8 +130,9 @@ const Login = () => {
                     bg: 'brand.300',
                   }}
                   color={'white'}
-                ></Button>
-                Sign in
+                >
+                  Sign in
+                </Button>
               </Stack>
             </form>
             <Stack pt={6}>

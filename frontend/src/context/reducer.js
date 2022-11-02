@@ -9,6 +9,8 @@ import {
   LOGIN_USER_ERROR,
   CREATE_POST_ERROR,
   CREATE_POST_SUCCESS,
+  UPDATE_POST_SUCCESS,
+  UPDATE_POST_ERROR,
 } from './actions'
 
 const reducer = (state, action) => {
@@ -94,6 +96,33 @@ const reducer = (state, action) => {
       showAlert: true,
       alertType: 'success',
       alertText: 'Post Created',
+    }
+  }
+
+  if (action.type === CREATE_POST_ERROR) {
+    return {
+      ...state,
+      showAlert: true,
+      alertType: 'danger',
+      alertText: 'Post Could Not Be Created',
+    }
+  }
+
+  if (action.type === UPDATE_POST_SUCCESS) {
+    return {
+      ...state,
+      showAlert: true,
+      alertType: 'success',
+      alertText: 'Post Updated',
+    }
+  }
+
+  if (action.type === UPDATE_POST_ERROR) {
+    return {
+      ...state,
+      showAlert: true,
+      alertType: 'danger',
+      alertText: 'Post Could Not Be Updated',
     }
   }
 

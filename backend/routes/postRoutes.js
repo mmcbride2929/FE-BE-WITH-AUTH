@@ -14,7 +14,7 @@ router.route('/').get(getPosts).post(createPost)
 router
   .route('/:id')
   .get(getPost)
-  .patch(authenticateUser, updatePost)
+  .patch(updatePost)
   .delete(authenticateUser, deletePost)
 
 module.exports = router

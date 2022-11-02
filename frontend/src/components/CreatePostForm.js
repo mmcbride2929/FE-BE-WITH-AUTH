@@ -15,10 +15,14 @@ const initialState = {
 const CreatePostForm = () => {
   // form values
   const [values, setValues] = useState(initialState)
-  const { showAlert, alertText, createPost, user } = useContext(AppContext)
+  const { showAlert, alertText, createPost, user, setHidePosts } =
+    useContext(AppContext)
 
   const handleChange = (e) => {
-    setValues({ ...values, [e.target.name]: e.target.value })
+    setValues((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+    }))
   }
 
   // setting user id to state
@@ -28,10 +32,12 @@ const CreatePostForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(values)
     createPost(values)
     e.target.reset()
     setValues(initialState)
+    setTimeout(() => {
+      setHidePosts(false)
+    }, 2000)
   }
 
   return (

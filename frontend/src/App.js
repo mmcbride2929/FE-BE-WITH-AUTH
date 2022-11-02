@@ -11,6 +11,7 @@ import Error from './pages/Error'
 import Feed from './pages/Feed'
 import ProtectedRoute from './pages/ProtectedRoute'
 import SinglePost from './pages/SinglePost'
+import EditPost from './pages/EditPost'
 
 const App = () => {
   return (
@@ -40,6 +41,7 @@ const App = () => {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/:id" element={<SinglePost />} />
+            <Route path="/:id/edit-post" element={<EditPost />} />
             <Route path="*" element={<Error />} />
           </Routes>
           <Footer />

@@ -1,14 +1,26 @@
 # currently working on
 
+-reorganize to do list....
 
+- we need to pass post to the new page
+- delete older component and state for hiding
 
-- if current user matches any posts with same id, conditionally render edit/delete btn
-
+- all edit buttons need to navigate to edit page
+- delete og component and add new page
+- fix components folder
+- create deletePost in context
+- turn authenticate user back on update post
+- edit post with jwt authentication
+- create an edit post form component and add to interface
+- send edit request w new form + token for authentification
+- is editing turns false, edit success prompt, navigate to feed
+- delete post with jwt authentication
 - create upload photo button & integrate leons photo hosting site
 - logout functionality
 - conditionally render sign in / sign out depending on if logged in
-
-# questions
+- make sure all reducer messages are working.. editing post pop up, creating post pop up.. logging in pop up.. logging out.. etc questions
+  -make sure to understand exactly what actions are doing and why we have a blank file for them
+- create a my posts tab that displays only your posts.
 
 # create post
 

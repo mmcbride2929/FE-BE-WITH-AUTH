@@ -1,36 +1,15 @@
-import axios from 'axios'
-import { useEffect, useState } from 'react'
-import { useLocation, useNavigate } from 'react-router-dom'
-import { IconButton, Link } from '@chakra-ui/react'
-import { Link as ReachLink } from '@reach/router'
-import { ArrowBackIcon } from '@chakra-ui/icons'
+import { useNavigate } from 'react-router-dom'
+import { IconButton } from '@chakra-ui/react'
+import { ArrowBackIcon, DeleteIcon, EditIcon } from '@chakra-ui/icons'
+import { useLocation } from 'react-router-dom'
+import PostInterfaceContainer from '../components/PostInterfaceContainer'
 
 const SinglePost = () => {
-  const [post, setPost] = useState([])
-  const [loading, setLoading] = useState(true)
+  const navigate = useNavigate()
 
   // getting item ID from react router's parameter
   const location = useLocation()
   const path = location.pathname.split('/')[1]
-  const { species, weight, bait } = post
-
-  const navigate = useNavigate()
-
-  const fetchPost = async () => {
-    try {
-      const data = await axios.get(`http://localhost:2121/api/v1/posts/${path}`)
-
-      setPost(data.data)
-      setLoading(false)
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-  useEffect(() => {
-    fetchPost()
-  }, [])
-
   return (
     <div>
       <IconButton
@@ -46,10 +25,34 @@ const SinglePost = () => {
         icon={<ArrowBackIcon />}
       />
 
-      {!loading ? <p>{species}</p> : <>Loading</>}
+      <IconButton
+        onClick={() => navigate(`/${path}/edit-post`)}
+        variant="outline"
+        color={'white'}
+        bg="brand.300"
+        fontSize="20px"
+        _hover={{
+          color: 'brand.300',
+          bg: 'white',
+        }}
+        icon={<EditIcon />}
+      />
+
+      <IconButton
+        onClick={() => console.log('placeholder')}
+        variant="outline"
+        color={'white'}
+        bg="brand.300"
+        fontSize="20px"
+        _hover={{
+          color: 'brand.300',
+          bg: 'white',
+        }}
+        icon={<DeleteIcon />}
+      />
+
+      <PostInterfaceContainer />
     </div>
   )
 }
 export default SinglePost
-
-// singlePost is the container, build components like SinglePostTitle, SinglePostImage
