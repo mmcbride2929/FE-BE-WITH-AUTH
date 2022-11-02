@@ -1,7 +1,10 @@
 import SinglePost from './SinglePost'
 import axios from 'axios'
-import { useEffect, useState } from 'react'
-import { useLocation } from 'react-router-dom'
+import AppContext from '../../context/AppContext'
+import { IconButton } from '@chakra-ui/react'
+import { useEffect, useState, useContext } from 'react'
+import { useLocation, useNavigate } from 'react-router-dom'
+import { ArrowBackIcon, DeleteIcon, EditIcon } from '@chakra-ui/icons'
 
 const SinglePostInterface = () => {
   const [post, setPost] = useState([])
@@ -10,6 +13,11 @@ const SinglePostInterface = () => {
   // getting item ID from react router's parameter
   const location = useLocation()
   const path = location.pathname.split('/')[1]
+
+  const navigate = useNavigate()
+
+  // getting user
+  const { user } = useContext(AppContext)
 
   const fetchPost = async () => {
     try {
@@ -26,6 +34,53 @@ const SinglePostInterface = () => {
     setLoading(false)
   }, [])
 
-  return <>{!loading ? <SinglePost post={post} /> : <>Loading</>}</>
+  return (
+    <>
+      <IconButton
+        onClick={() => navigate('/feed')}
+        variant="outline"
+        color={'white'}
+        bg="brand.300"
+        fontSize="20px"
+        _hover={{
+          color: 'brand.300',
+          bg: 'white',
+        }}
+        icon={<ArrowBackIcon />}
+      />
+      {user._id === post.createdBy ? (
+        <>
+          <IconButton
+            onClick={() => navigate(`/${path}/edit-post`)}
+            variant="outline"
+            color={'white'}
+            bg="brand.300"
+            fontSize="20px"
+            _hover={{
+              color: 'brand.300',
+              bg: 'white',
+            }}
+            icon={<EditIcon />}
+          />
+
+          <IconButton
+            onClick={() => console.log('placeholder')}
+            variant="outline"
+            color={'white'}
+            bg="brand.300"
+            fontSize="20px"
+            _hover={{
+              color: 'brand.300',
+              bg: 'white',
+            }}
+            icon={<DeleteIcon />}
+          />
+        </>
+      ) : (
+        <></>
+      )}
+      {!loading ? <SinglePost post={post} /> : <>Loading</>}
+    </>
+  )
 }
 export default SinglePostInterface

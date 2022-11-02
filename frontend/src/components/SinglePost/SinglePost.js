@@ -3,3 +3,4 @@ const SinglePost = ({ post }) => {
   return <>{species} + 'sedfsdfsdfsdfsdf'</>
 }
 export default SinglePost
+

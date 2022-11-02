@@ -21,6 +21,7 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from '@chakra-ui/icons'
+import { Link as ReachLink } from 'react-router-dom'
 
 const Navbar = () => {
   const { isOpen, onToggle } = useDisclosure()
@@ -58,7 +59,9 @@ const Navbar = () => {
             fontFamily={'heading'}
             color={useColorModeValue('gray.800', 'white')}
           >
-            Logo
+            <Link as={ReachLink} to="/feed">
+              Logoo
+            </Link>
           </Text>
 
           <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
