@@ -14,6 +14,8 @@ import {
   CREATE_POST_ERROR,
   UPDATE_POST_SUCCESS,
   UPDATE_POST_ERROR,
+  DELETE_POST_ERROR,
+  DELETE_POST_SUCCESS,
 } from './actions'
 import reducer from './reducer'
 
@@ -36,9 +38,6 @@ export const AppProvider = ({ children }) => {
 
   // toggle between feed page interface and create post interface
   const [hidePosts, setHidePosts] = useState(false)
-
-  // toggle to make post editable
-  const [postEditMode, setPostEditMode] = useState(false)
 
   /* ******** functions ******** */
   const displayAlert = () => {
@@ -134,6 +133,22 @@ export const AppProvider = ({ children }) => {
     clearAlert()
   }
 
+  const deletePost = async (path) => {
+    try {
+      await axios.delete(`http://localhost:2121/api/v1/posts/${path}`)
+
+      dispatch({
+        type: DELETE_POST_SUCCESS,
+      })
+    } catch (error) {
+      dispatch({
+        type: DELETE_POST_ERROR,
+        payload: { msg: error.response.data.msg },
+      })
+    }
+    clearAlert()
+  }
+
   const addUserToLocalStorage = ({ user, token }) => {
     localStorage.setItem('user', JSON.stringify(user))
     localStorage.setItem('token', token)
@@ -156,8 +171,7 @@ export const AppProvider = ({ children }) => {
         setHidePosts,
         createPost,
         updatePost,
-        postEditMode,
-        setPostEditMode,
+        deletePost,
       }}
     >
       {children}

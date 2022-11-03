@@ -1,39 +1,19 @@
 # currently working on
 
--reorganize to do list....
 
-- we need to pass post to the new page
-- delete older component and state for hiding
-
-- all edit buttons need to navigate to edit page
-- delete og component and add new page
-- fix components folder
-- create deletePost in context
-- turn authenticate user back on update post
+- success message when deleting from feed and from single page
+- turn authenticate user back on update post/delete
 - edit post with jwt authentication
-- create an edit post form component and add to interface
-- send edit request w new form + token for authentification
-- is editing turns false, edit success prompt, navigate to feed
+
 - delete post with jwt authentication
 - create upload photo button & integrate leons photo hosting site
 - logout functionality
 - conditionally render sign in / sign out depending on if logged in
-- make sure all reducer messages are working.. editing post pop up, creating post pop up.. logging in pop up.. logging out.. etc questions
+- make sure all reducer messages are working.. editing post pop up, creating post pop up.. login success pop up.. logging out.. etc questions
   -make sure to understand exactly what actions are doing and why we have a blank file for them
 - create a my posts tab that displays only your posts.
 
 # create post
-
-user info:
-photo
-species
-bat
-location
-length
-weight
-date
-creator
-likes
 
 - throw err when user enters string and not number for length and weight
 
@@ -43,7 +23,7 @@ likes
 
 # single post
 
-- api should direct to just /post/id not /posts/id/ for single item
+- api should direct to just /post/id
 
 # sign in / sign up
 

@@ -4,11 +4,16 @@ import { useContext } from 'react'
 import AppContext from '../../context/AppContext'
 import { DeleteIcon, EditIcon } from '@chakra-ui/icons'
 
-const Post = ({ post }) => {
+const Post = ({ post, posts }) => {
   const { species, length, bait, _id, createdBy } = post
 
   // getting user
-  const { user, setPostEditMode } = useContext(AppContext)
+  const { user, deletePost } = useContext(AppContext)
+
+  const handleDelete = () => {
+    deletePost(_id)
+    posts.filter((p) => p._id === _id)
+  }
 
   return (
     <div>
@@ -22,7 +27,6 @@ const Post = ({ post }) => {
           <>
             <Link as={ReachLink} to={`/${_id}/edit-post`}>
               <IconButton
-                onClick={setPostEditMode(true)}
                 variant="outline"
                 color={'white'}
                 bg="brand.300"
@@ -35,7 +39,7 @@ const Post = ({ post }) => {
               />
             </Link>
             <IconButton
-              // onClick={console.log('placeholder')}
+              onClick={handleDelete}
               variant="outline"
               color={'white'}
               bg="brand.300"

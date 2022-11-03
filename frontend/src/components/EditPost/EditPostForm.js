@@ -5,9 +5,19 @@ import AppContext from '../../context/AppContext'
 import axios from 'axios'
 import { useLocation } from 'react-router-dom'
 
+const initialState = {
+  species: '',
+  photo: '',
+  bait: '',
+  location: '',
+  length: 0,
+  weight: 0,
+  createdBy: '',
+}
+
 const EditPostForm = () => {
   // setting initial value to current post
-  const [values, setValues] = useState([])
+  const [values, setValues] = useState(initialState)
   const [loading, setLoading] = useState(true)
 
   // getting item ID from react router's parameter
@@ -43,7 +53,6 @@ const EditPostForm = () => {
   // send token in header
   const handleSubmit = (e) => {
     e.preventDefault()
-    console.log(values)
     updatePost(values, path)
 
     // if successful
@@ -105,7 +114,7 @@ const EditPostForm = () => {
             onChange={handleChange}
             type="number"
             placeholder="Enter length"
-            value={values.length}
+            value={values.length || 0}
           />
 
           <FormLabel>Weight</FormLabel>
@@ -114,7 +123,7 @@ const EditPostForm = () => {
             onChange={handleChange}
             type="number"
             placeholder="Enter weight"
-            value={values.weight}
+            value={values.weight || 0}
           />
           {showAlert ? <p>{alertText}</p> : ''}
           <Button

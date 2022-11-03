@@ -17,7 +17,7 @@ const SinglePostInterface = () => {
   const navigate = useNavigate()
 
   // getting user
-  const { user } = useContext(AppContext)
+  const { user, deletePost, alertText } = useContext(AppContext)
 
   const fetchPost = async () => {
     try {
@@ -27,6 +27,13 @@ const SinglePostInterface = () => {
     } catch (error) {
       console.log(error)
     }
+  }
+
+  const handleDelete = () => {
+    deletePost(post._id)
+    setTimeout(() => {
+      navigate('/feed')
+    }, 2500)
   }
 
   useEffect(() => {
@@ -64,7 +71,7 @@ const SinglePostInterface = () => {
           />
 
           <IconButton
-            onClick={() => console.log('placeholder')}
+            onClick={handleDelete}
             variant="outline"
             color={'white'}
             bg="brand.300"
@@ -79,7 +86,13 @@ const SinglePostInterface = () => {
       ) : (
         <></>
       )}
-      {!loading ? <SinglePost post={post} /> : <>Loading</>}
+      {!loading ? (
+        <>
+          {alertText && alertText} <SinglePost post={post} />
+        </>
+      ) : (
+        <>Loading</>
+      )}
     </>
   )
 }

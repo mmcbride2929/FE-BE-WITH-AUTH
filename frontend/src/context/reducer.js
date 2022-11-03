@@ -11,6 +11,8 @@ import {
   CREATE_POST_SUCCESS,
   UPDATE_POST_SUCCESS,
   UPDATE_POST_ERROR,
+  DELETE_POST_ERROR,
+  DELETE_POST_SUCCESS,
 } from './actions'
 
 const reducer = (state, action) => {
@@ -126,12 +128,21 @@ const reducer = (state, action) => {
     }
   }
 
-  if (action.type === LOGIN_USER_ERROR) {
+  if (action.type === DELETE_POST_SUCCESS) {
+    return {
+      ...state,
+      showAlert: true,
+      alertType: 'success',
+      alertText: 'Post Deleted',
+    }
+  }
+
+  if (action.type === DELETE_POST_ERROR) {
     return {
       ...state,
       showAlert: true,
       alertType: 'danger',
-      alertText: action.payload.msg,
+      alertText: 'Post Could Not Be Deleted',
     }
   }
 

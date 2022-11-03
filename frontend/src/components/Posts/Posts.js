@@ -19,12 +19,12 @@ const Posts = () => {
 
   useEffect(() => {
     fetchPosts()
-  }, [])
+  }, [posts])
 
   return (
     <div>
       {posts.map((post) => {
-        return <Post key={post._id} post={post} />
+        return <Post key={post._id} post={post} posts={posts} />
       })}
     </div>
   )
