@@ -34,10 +34,18 @@ export const initialState = {
 }
 
 export const AppProvider = ({ children }) => {
+  /* ******** state ******** */
   const [state, dispatch] = useReducer(reducer, initialState)
 
   // toggle between feed page interface and create post interface
   const [hidePosts, setHidePosts] = useState(false)
+
+  /* ******** axios instance + header for token ******** */
+  const authFetch = axios.create({
+    headers: {
+      Authorization: `Bearer ${state.token}`,
+    },
+  })
 
   /* ******** functions ******** */
   const displayAlert = () => {
@@ -83,9 +91,6 @@ export const AppProvider = ({ children }) => {
       )
 
       const { user, token } = response.data
-      console.log(user)
-      console.log(token)
-      console.log('berries')
       dispatch({
         type: LOGIN_USER_SUCCESS,
         payload: { user, token },
@@ -103,7 +108,7 @@ export const AppProvider = ({ children }) => {
 
   const createPost = async (post) => {
     try {
-      await axios.post('http://localhost:2121/api/v1/posts', post)
+      await authFetch.post('http://localhost:2121/api/v1/posts', post)
 
       dispatch({
         type: CREATE_POST_SUCCESS,
@@ -119,7 +124,7 @@ export const AppProvider = ({ children }) => {
 
   const updatePost = async (post, path) => {
     try {
-      await axios.patch(`http://localhost:2121/api/v1/posts/${path}`, post)
+      await authFetch.patch(`http://localhost:2121/api/v1/posts/${path}`, post)
 
       dispatch({
         type: UPDATE_POST_SUCCESS,
@@ -135,7 +140,7 @@ export const AppProvider = ({ children }) => {
 
   const deletePost = async (path) => {
     try {
-      await axios.delete(`http://localhost:2121/api/v1/posts/${path}`)
+      await authFetch.delete(`http://localhost:2121/api/v1/posts/${path}`)
 
       dispatch({
         type: DELETE_POST_SUCCESS,

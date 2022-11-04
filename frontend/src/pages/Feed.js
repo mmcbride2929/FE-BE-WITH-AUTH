@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import CreatePostInterface from '../components/CreatePost/CreatePostInterface'
-import PostsInterface from '../components/Posts/PostsInterface'
+import PostsInterface from '../components/Feed/PostsInterface'
 import AppContext from '../context/AppContext'
 
 const Feed = () => {

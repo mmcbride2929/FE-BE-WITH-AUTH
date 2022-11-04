@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 
-import Posts from '../Posts/Posts'
+import Posts from './Posts'
 import { Button } from '@chakra-ui/react'
 import AppContext from '../../context/AppContext'
 

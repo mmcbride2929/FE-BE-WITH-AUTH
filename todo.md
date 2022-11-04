@@ -1,12 +1,13 @@
 # currently working on
 
-
-- success message when deleting from feed and from single page
-- turn authenticate user back on update post/delete
 - edit post with jwt authentication
 
-- delete post with jwt authentication
+- post with jwt authentication
+
+- create form is still visiblewhen you press home on logo
+
 - create upload photo button & integrate leons photo hosting site
+- when deleting on feed we need to prompt if successful
 - logout functionality
 - conditionally render sign in / sign out depending on if logged in
 - make sure all reducer messages are working.. editing post pop up, creating post pop up.. login success pop up.. logging out.. etc questions

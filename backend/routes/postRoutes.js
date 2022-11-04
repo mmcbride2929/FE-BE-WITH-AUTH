@@ -10,7 +10,11 @@ const {
 } = require('../controllers/postControllers')
 const authenticateUser = require('../middleware/authenticateUser')
 
-router.route('/').get(getPosts).post(createPost)
-router.route('/:id').get(getPost).patch(updatePost).delete(deletePost)
+router.route('/').get(getPosts).post(authenticateUser, createPost)
+router
+  .route('/:id')
+  .get(getPost)
+  .patch(authenticateUser, updatePost)
+  .delete(authenticateUser, deletePost)
 
 module.exports = router
