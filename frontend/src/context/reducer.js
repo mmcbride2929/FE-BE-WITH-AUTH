@@ -13,7 +13,10 @@ import {
   UPDATE_POST_ERROR,
   DELETE_POST_ERROR,
   DELETE_POST_SUCCESS,
+  LOGOUT_USER,
 } from './actions'
+
+import { initialState } from './AppContext'
 
 const reducer = (state, action) => {
   if (action.type === DISPLAY_ALERT) {
@@ -89,6 +92,14 @@ const reducer = (state, action) => {
       showAlert: true,
       alertType: 'danger',
       alertText: action.payload.msg,
+    }
+  }
+
+  if (action.type === LOGOUT_USER) {
+    return {
+      ...initialState,
+      user: null,
+      token: null,
     }
   }
 

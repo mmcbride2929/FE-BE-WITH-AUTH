@@ -16,6 +16,7 @@ import {
   UPDATE_POST_ERROR,
   DELETE_POST_ERROR,
   DELETE_POST_SUCCESS,
+  LOGOUT_USER,
 } from './actions'
 import reducer from './reducer'
 
@@ -106,6 +107,11 @@ export const AppProvider = ({ children }) => {
     clearAlert()
   }
 
+  const logoutUser = async () => {
+    dispatch({ type: LOGOUT_USER })
+    removeUserFromLocalStorage()
+  }
+
   const createPost = async (post) => {
     try {
       await authFetch.post('http://localhost:2121/api/v1/posts', post)
@@ -177,6 +183,7 @@ export const AppProvider = ({ children }) => {
         createPost,
         updatePost,
         deletePost,
+        logoutUser,
       }}
     >
       {children}

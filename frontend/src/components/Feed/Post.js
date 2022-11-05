@@ -17,7 +17,7 @@ const Post = ({ post, posts }) => {
 
   return (
     <div>
-      <Link as={ReachLink} to={`/${_id}`}>
+      <Link as={ReachLink} to={`/post/${_id}`}>
         {species}
       </Link>
       <p>{length}</p>
@@ -25,7 +25,7 @@ const Post = ({ post, posts }) => {
       <div>
         {createdBy === user._id ? (
           <>
-            <Link as={ReachLink} to={`/${_id}/edit-post`}>
+            <Link as={ReachLink} to={`/edit-post/${_id}`}>
               <IconButton
                 variant="outline"
                 color={'white'}

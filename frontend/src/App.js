@@ -37,11 +37,11 @@ const App = () => {
               }
             />
 
-            <Route path="/landing" element={<Landing />} />
-            <Route path="/login" element={<Login />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/:id" element={<SinglePost />} />
-            <Route path="/:id/edit-post" element={<EditPost />} />
+            <Route path="landing" element={<Landing />} />
+            <Route path="login" element={<Login />} />
+            <Route path="register" element={<Register />} />
+            <Route path="post/:id" element={<SinglePost />} />
+            <Route path="edit-post/:id" element={<EditPost />} />
             <Route path="*" element={<Error />} />
           </Routes>
           <Footer />

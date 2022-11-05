@@ -12,7 +12,10 @@ const SinglePostInterface = () => {
 
   // getting item ID from react router's parameter
   const location = useLocation()
-  const path = location.pathname.split('/')[1]
+  console.log(location)
+  console.log('beans')
+  const path = location.pathname.split('/')[2]
+  console.log(path)
 
   const navigate = useNavigate()
 
@@ -58,7 +61,7 @@ const SinglePostInterface = () => {
       {user._id === post.createdBy ? (
         <>
           <IconButton
-            onClick={() => navigate(`/${path}/edit-post`)}
+            onClick={() => navigate(`/edit-post/${path}`)}
             variant="outline"
             color={'white'}
             bg="brand.300"

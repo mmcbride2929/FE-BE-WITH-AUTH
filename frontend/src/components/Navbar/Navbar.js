@@ -22,9 +22,12 @@ import {
   ChevronRightIcon,
 } from '@chakra-ui/icons'
 import { Link as ReachLink } from 'react-router-dom'
+import { useContext } from 'react'
+import AppContext from '../../context/AppContext'
 
 const Navbar = () => {
   const { isOpen, onToggle } = useDisclosure()
+  const { user, logoutUser } = useContext(AppContext)
 
   return (
     <Box>
@@ -75,28 +78,28 @@ const Navbar = () => {
           direction={'row'}
           spacing={6}
         >
-          <Button
-            as={'a'}
-            fontSize={'sm'}
-            fontWeight={400}
-            variant={'link'}
-            href={'#'}
-          >
-            Sign In
-          </Button>
-          <Button
-            display={{ base: 'none', md: 'inline-flex' }}
-            fontSize={'sm'}
-            fontWeight={600}
-            color={'white'}
-            bg={'pink.400'}
-            href={'#'}
-            _hover={{
-              bg: 'pink.300',
-            }}
-          >
-            Sign Up
-          </Button>
+          {!user ? (
+            <Button
+              as={'a'}
+              fontSize={'sm'}
+              fontWeight={400}
+              variant={'link'}
+              href={'#'}
+            >
+              Sign In123
+            </Button>
+          ) : (
+            <Button
+              onClick={logoutUser}
+              as={'a'}
+              fontSize={'sm'}
+              fontWeight={400}
+              variant={'link'}
+              href={'#'}
+            >
+              Logout
+            </Button>
+          )}
         </Stack>
       </Flex>
 

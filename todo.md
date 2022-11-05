@@ -1,37 +1,35 @@
 # currently working on
 
-- edit post with jwt authentication
+- add alerts when logging in/registering
+- delete required on inputs and use real alerts
+- make session last less than one day, user should be logged out after it expires.test with ten seconds
+- remove nave and footer from landing/sign in/register/error
 
-- post with jwt authentication
+# MISC
 
-- create form is still visiblewhen you press home on logo
-
-- create upload photo button & integrate leons photo hosting site
-- when deleting on feed we need to prompt if successful
-- logout functionality
-- conditionally render sign in / sign out depending on if logged in
 - make sure all reducer messages are working.. editing post pop up, creating post pop up.. login success pop up.. logging out.. etc questions
-  -make sure to understand exactly what actions are doing and why we have a blank file for them
-- create a my posts tab that displays only your posts.
+- footer isn't sticking to bottom when there's not enough content
 
 # create post
 
 - throw err when user enters string and not number for length and weight
+- create upload photo button & integrate leons photo hosting site
+
+# edit post
+
+- create upload photo button & integrate leons photo hosting site
 
 # home feed
 
-- create a create post button that forwards to create post page
+- create form is still visiblewhen you press home on logo
+- create a create post that forwards to create post page
+- when deleting on feed we need to prompt if successful
 
 # single post
 
 - api should direct to just /post/id
 
 # sign in / sign up
-
-- add login function to register page when users register
-- add local storage to login function
-- add alerts with form validation (video 28-35)
-- delete required on inputs and use real alerts
 
 # landing page
 
@@ -47,5 +45,6 @@
 # user profile
 
 - display user without edit buttons
+- create a my posts tab that displays only your posts.
 
 # page not found

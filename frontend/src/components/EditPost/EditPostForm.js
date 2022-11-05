@@ -22,7 +22,9 @@ const EditPostForm = () => {
 
   // getting item ID from react router's parameter
   const location = useLocation()
-  const path = location.pathname.split('/')[1]
+  console.log(location)
+  const path = location.pathname.split('/')[2]
+  console.log(path)
 
   const { showAlert, alertText, updatePost } = useContext(AppContext)
 
