@@ -1,7 +1,10 @@
 import { Box, Heading, Text, Button } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 
-const Error = () => {
+const Error = ({ setNav }) => {
+  // hiding nav
+  setNav(false)
+
   return (
     <Box textAlign="center" py={10} px={6}>
       <Heading

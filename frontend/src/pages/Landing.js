@@ -1,7 +1,11 @@
 import { Box, Heading, Container, Text, Button, Stack } from '@chakra-ui/react'
+
 import { Link } from 'react-router-dom'
 
-const Landing = () => {
+const Landing = ({ setNav }) => {
+  // hiding nav
+  setNav(false)
+
   return (
     <>
       <Container maxW={'3xl'} bg="brand.100">

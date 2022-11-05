@@ -21,7 +21,10 @@ import Alert from '../components/Alerts/Alert'
 
 const initialState = { userName: '', email: '', password: '' }
 
-const Register = () => {
+const Register = ({ setNav }) => {
+  // hiding nav
+  setNav(false)
+
   /* *********** LOCAL STATE ********** */
   // components/user values
   const [values, setValues] = useState(initialState)
