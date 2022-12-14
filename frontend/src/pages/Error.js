@@ -29,7 +29,7 @@ const Error = ({ setNav }) => {
         color="white"
         variant="solid"
       >
-        <Link to="/"> Go to Home</Link>
+        <Link to="/landing"> Go to Home</Link>
       </Button>
     </Box>
   )

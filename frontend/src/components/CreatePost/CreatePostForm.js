@@ -1,4 +1,5 @@
 import { Button, FormControl, FormLabel, Input } from '@chakra-ui/react'
+import Axios from 'axios'
 import { useContext, useEffect, useState } from 'react'
 import AppContext from '../../context/AppContext'
 
@@ -15,6 +16,7 @@ const initialState = {
 const CreatePostForm = () => {
   // form values
   const [values, setValues] = useState(initialState)
+
   const { showAlert, alertText, createPost, user, setHidePosts } =
     useContext(AppContext)
 
@@ -32,6 +34,7 @@ const CreatePostForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+
     createPost(values)
     e.target.reset()
     setValues(initialState)
@@ -57,10 +60,9 @@ const CreatePostForm = () => {
           <FormLabel>Photo</FormLabel>
           <Input
             name="photo"
-            onChange={handleChange}
-            type="string"
+            type="file"
+            accept="image/*"
             placeholder="Upload photo"
-            value={values.photo}
           />
         </FormControl>
 

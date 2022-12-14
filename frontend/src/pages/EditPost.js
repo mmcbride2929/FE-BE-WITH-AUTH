@@ -3,7 +3,10 @@ import { IconButton } from '@chakra-ui/react'
 import { useNavigate } from 'react-router-dom'
 import EditPostInterface from '../components/EditPost/EditPostInterface'
 
-const EditPost = () => {
+const EditPost = ({ setNav }) => {
+  // hiding navbar if not logged in
+  setNav(true)
+
   const navigate = useNavigate()
   return (
     <>

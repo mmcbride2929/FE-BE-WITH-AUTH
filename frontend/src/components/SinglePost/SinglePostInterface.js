@@ -12,10 +12,7 @@ const SinglePostInterface = () => {
 
   // getting item ID from react router's parameter
   const location = useLocation()
-  console.log(location)
-  console.log('beans')
   const path = location.pathname.split('/')[2]
-  console.log(path)
 
   const navigate = useNavigate()
 

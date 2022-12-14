@@ -22,9 +22,7 @@ const EditPostForm = () => {
 
   // getting item ID from react router's parameter
   const location = useLocation()
-  console.log(location)
   const path = location.pathname.split('/')[2]
-  console.log(path)
 
   const { showAlert, alertText, updatePost } = useContext(AppContext)
 
@@ -57,9 +55,8 @@ const EditPostForm = () => {
     e.preventDefault()
     updatePost(values, path)
 
-    // if successful
     setTimeout(() => {
-      navigate('/')
+      navigate('/feed')
     }, 2000)
   }
 

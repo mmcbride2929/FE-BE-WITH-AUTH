@@ -22,7 +22,7 @@ import Alert from '../components/Alerts/Alert'
 const initialState = { email: '', password: '' }
 
 const Login = ({ setNav }) => {
-  // hiding nav
+  // hiding navbar if not logged in
   setNav(false)
 
   /* *********** LOCAL STATE ********** */
@@ -51,7 +51,7 @@ const Login = ({ setNav }) => {
     }
 
     const currentUser = { email, password, _id }
-    loginUser(currentUser)
+    loginUser(currentUser, setNav)
   }
 
   /* *********** USER USEEFFECT ********** */
@@ -59,7 +59,7 @@ const Login = ({ setNav }) => {
     if (user) {
       setTimeout(() => {
         navigate('/feed')
-      })
+      }, 2000)
     }
   }, [user, navigate])
 

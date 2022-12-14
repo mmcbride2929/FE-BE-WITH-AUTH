@@ -5,7 +5,7 @@ import AppContext from '../../context/AppContext'
 import { DeleteIcon, EditIcon } from '@chakra-ui/icons'
 
 const Post = ({ post, posts }) => {
-  const { species, length, bait, _id, createdBy } = post
+  const { species, photo, length, bait, _id, createdBy } = post
 
   // getting user
   const { user, deletePost } = useContext(AppContext)
@@ -21,7 +21,7 @@ const Post = ({ post, posts }) => {
         {species}
       </Link>
       <p>{length}</p>
-      {bait}
+      {photo}
       <div>
         {createdBy === user._id ? (
           <>

@@ -32,7 +32,7 @@ const createPost = asyncHandler(async (req, res) => {
     res.status(400)
     throw new Error('Please add text a field')
   }
-  console.log(req.body)
+
   const post = await Post.create(req.body)
   res.status(200).json(post)
 })
@@ -40,8 +40,6 @@ const createPost = asyncHandler(async (req, res) => {
 // PATCH - /api/v1/posts/:id
 const updatePost = asyncHandler(async (req, res) => {
   const post = await Post.findById(req.params.id)
-  console.log(post)
-  console.log(req.params.id)
   if (!post) {
     res.status(400)
     throw new Error('No matching posts were found')

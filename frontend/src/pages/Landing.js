@@ -3,7 +3,7 @@ import { Box, Heading, Container, Text, Button, Stack } from '@chakra-ui/react'
 import { Link } from 'react-router-dom'
 
 const Landing = ({ setNav }) => {
-  // hiding nav
+  // hiding navbar if not logged in
   setNav(false)
 
   return (
@@ -37,15 +37,17 @@ const Landing = ({ setNav }) => {
             alignSelf={'center'}
             position={'relative'}
           >
-            <Button
-              bg={'brand.200'}
-              px={6}
-              _hover={{
-                bg: 'brand.300',
-              }}
-            >
-              <Link to="/login">Login/Register</Link>
-            </Button>
+            <Link to="/login">
+              <Button
+                bg={'brand.200'}
+                px={6}
+                _hover={{
+                  bg: 'brand.300',
+                }}
+              >
+                Login/Register
+              </Button>
+            </Link>
           </Stack>
         </Stack>
       </Container>

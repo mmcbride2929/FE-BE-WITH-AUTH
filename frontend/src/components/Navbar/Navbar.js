@@ -27,7 +27,7 @@ import AppContext from '../../context/AppContext'
 
 const Navbar = () => {
   const { isOpen, onToggle } = useDisclosure()
-  const { user, logoutUser } = useContext(AppContext)
+  const { user, logoutUser, setHidePosts } = useContext(AppContext)
 
   return (
     <Box>
@@ -62,8 +62,8 @@ const Navbar = () => {
             fontFamily={'heading'}
             color={useColorModeValue('gray.800', 'white')}
           >
-            <Link as={ReachLink} to="/feed">
-              Logoo
+            <Link as={ReachLink} to="/feed" onClick={() => setHidePosts(false)}>
+              Logo
             </Link>
           </Text>
 
@@ -89,15 +89,10 @@ const Navbar = () => {
               Sign In123
             </Button>
           ) : (
-            <Button
-              onClick={logoutUser}
-              as={'a'}
-              fontSize={'sm'}
-              fontWeight={400}
-              variant={'link'}
-              href={'#'}
-            >
-              Logout
+            <Button onClick={logoutUser} fontSize={'sm'} fontWeight={400}>
+              <Link as={ReachLink} to="/landing">
+                Logout
+              </Link>
             </Button>
           )}
         </Stack>

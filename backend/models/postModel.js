@@ -4,7 +4,7 @@ const postSchema = mongoose.Schema(
   {
     species: { type: String, required: [true, 'Please add a species'] },
     photo: { type: String, required: [true, 'Please add a photo'] },
-    bait: { type: String, required: [true, 'Please add a bait type'] },
+    bait: { type: Object, required: [true, 'Please add a bait type'] },
     location: String,
     length: Number,
     weight: Number,

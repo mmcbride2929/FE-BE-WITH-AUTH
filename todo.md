@@ -1,50 +1,63 @@
 # currently working on
 
-- add alerts when logging in/registering
-- delete required on inputs and use real alerts
-- make session last less than one day, user should be logged out after it expires.test with ten seconds
-- remove nave and footer from landing/sign in/register/error
+# create / edit post
+
+# single post / feed
+
+- add clickable username of post creator that sends you to user profile
+
+To achieve by SUNDAY:
+
+TUES
+
+WED
+
+THUR
+
+FRI
+
+SAT
+
+SUN
 
 # MISC
 
-- make sure all reducer messages are working.. editing post pop up, creating post pop up.. login success pop up.. logging out.. etc questions
-- footer isn't sticking to bottom when there's not enough content
-
 # create post
 
+-add upload photo
+
 - throw err when user enters string and not number for length and weight
-- create upload photo button & integrate leons photo hosting site
+- pressing alt + left forwards user to edit single post?
+- post still posts if we add a .txt file, although cloud sends back error
 
 # edit post
 
-- create upload photo button & integrate leons photo hosting site
+- back button is taking up 100% of width
+- throw err when user enters string and not number for length and weight
 
 # home feed
 
-- create form is still visiblewhen you press home on logo
-- create a create post that forwards to create post page
 - when deleting on feed we need to prompt if successful
+- add like icon to posts
+- add an array of liked posts to user collection
+- create likePost func, that adds postID to users 'likedPosts' array within user colection
 
 # single post
 
-- api should direct to just /post/id
+- add clickable username of post creator
+- need to impliment a link to the users profile
+- add like icon
 
 # sign in / sign up
 
+- can still access when logged in and forwarded after a few seconds
+
 # landing page
 
--- default page if not logged in
+# my profile / user profile
 
-# my profile
-
-- toggle between their favorites and their own posts
 - create toggle button
+- toggle between their liked posts and their own posts
 - edit profile button (name, description, photo)
-- edit/delete button on posts
-
-# user profile
-
-- display user without edit buttons
-- create a my posts tab that displays only your posts.
 
 # page not found
