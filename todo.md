@@ -1,33 +1,22 @@
 # currently working on
 
-# create / edit post
-
-# single post / feed
-
-- add clickable username of post creator that sends you to user profile
-
 # MISC
-
-- when deleting a post you should delete photo from cloudinary
-- when editing post you should swap photos in cloudinary
 
 # create post
 
-- throw err when user enters string and not number for length and weight
-- pressing alt + left forwards user to edit single post?
+- instead of sharing interface with create post, we need to give create a page of its own.
 - post still posts if we add a .txt file, although cloud sends back error
 
 # edit post
 
-- back button is taking up 100% of width
-- throw err when user enters string and not number for length and weight
-
 # home feed
 
+- when deleting post we need to delete cloudinary photo
 - when deleting on feed we need to prompt if successful
 - add like icon to posts
 - add an array of liked posts to user collection
-- create likePost func, that adds postID to users 'likedPosts' array within user colection
+- create likePost func, that adds postID to users 'likedPosts' array within user collection
+- add clickable username of post creator
 
 # single post
 

@@ -76,16 +76,6 @@ const EditPostForm = () => {
               value={values.species}
             />
           </FormControl>
-          <FormControl isRequired>
-            <FormLabel>Photo</FormLabel>
-            <Input
-              name="photo"
-              onChange={handleChange}
-              type="string"
-              placeholder="Upload photo"
-              value={values.photo}
-            />
-          </FormControl>
 
           <FormControl isRequired>
             <FormLabel>Bait Type</FormLabel>
@@ -113,7 +103,7 @@ const EditPostForm = () => {
             onChange={handleChange}
             type="number"
             placeholder="Enter length"
-            value={values.length || 0}
+            value={values.length}
           />
 
           <FormLabel>Weight</FormLabel>
@@ -122,12 +112,11 @@ const EditPostForm = () => {
             onChange={handleChange}
             type="number"
             placeholder="Enter weight"
-            value={values.weight || 0}
+            value={values.weight}
           />
           {showAlert ? <p>{alertText}</p> : ''}
           <Button
             type="submit"
-            size="lg"
             bg={'brand.200'}
             _hover={{
               bg: 'brand.300',

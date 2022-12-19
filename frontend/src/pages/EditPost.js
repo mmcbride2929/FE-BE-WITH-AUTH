@@ -14,11 +14,10 @@ const EditPost = ({ setNav }) => {
         onClick={() => navigate('/feed')}
         variant="outline"
         color={'white'}
-        bg="brand.300"
+        bg={'brand.200'}
         fontSize="20px"
         _hover={{
-          color: 'brand.300',
-          bg: 'white',
+          bg: 'brand.300',
         }}
         icon={<ArrowBackIcon />}
       />
