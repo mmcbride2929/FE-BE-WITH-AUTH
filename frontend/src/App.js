@@ -12,6 +12,7 @@ import ProtectedRoute from './pages/ProtectedRoute'
 import SinglePost from './pages/SinglePost'
 import EditPost from './pages/EditPost'
 import { useState } from 'react'
+import CreatePost from './pages/CreatePost'
 
 const App = () => {
   const [nav, setNav] = useState(true)
@@ -38,6 +39,10 @@ const App = () => {
               <Route
                 path="edit-post/:id"
                 element={<EditPost setNav={setNav} />}
+              />
+              <Route
+                path="create-post"
+                element={<CreatePost setNav={setNav} />}
               />
             </Routes>
             <Footer />

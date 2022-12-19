@@ -2,6 +2,8 @@
 
 # MISC
 
+- if not logged in, create post/ specific post pages should forward to landing
+
 # create post
 
 - instead of sharing interface with create post, we need to give create a page of its own.

@@ -1,7 +1,7 @@
 import { Button, FormControl, FormLabel, Input } from '@chakra-ui/react'
-import Axios from 'axios'
 import { useContext, useEffect, useState } from 'react'
 import AppContext from '../../context/AppContext'
+import { useNavigate } from 'react-router-dom'
 
 const initialState = {
   species: '',
@@ -18,8 +18,9 @@ const CreatePostForm = () => {
   const [values, setValues] = useState(initialState)
   const [image, setImage] = useState('')
 
-  const { showAlert, alertText, createPost, user, setHidePosts } =
-    useContext(AppContext)
+  const navigate = useNavigate()
+
+  const { showAlert, alertText, createPost, user } = useContext(AppContext)
 
   const handleChange = (e) => {
     setValues((prevState) => ({
@@ -30,15 +31,15 @@ const CreatePostForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-
     createPost(values)
     e.target.reset()
     setValues(initialState)
     setTimeout(() => {
-      setHidePosts(false)
+      navigate('/feed')
     }, 2000)
   }
 
+  // handling image upload
   const handleImageUpload = (e) => {
     const file = e.target.files[0]
     transformFile(file)
@@ -57,6 +58,7 @@ const CreatePostForm = () => {
       setImage('')
     }
   }
+
   // setting user id to state
   useEffect(() => {
     setValues((prevState) => ({ ...prevState, createdBy: user._id }))

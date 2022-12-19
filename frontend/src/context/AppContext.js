@@ -38,9 +38,6 @@ export const AppProvider = ({ children }) => {
   /* ******** state ******** */
   const [state, dispatch] = useReducer(reducer, initialState)
 
-  // toggle between feed page interface and create post interface
-  const [hidePosts, setHidePosts] = useState(false)
-
   /* ******** axios instance + header for token ******** */
   const authFetch = axios.create({
     headers: {
@@ -179,8 +176,7 @@ export const AppProvider = ({ children }) => {
         displayAlert,
         clearAlert,
         loginUser,
-        hidePosts,
-        setHidePosts,
+
         createPost,
         updatePost,
         deletePost,
