@@ -16,6 +16,7 @@ const initialState = {
 const CreatePostForm = () => {
   // form values
   const [values, setValues] = useState(initialState)
+  const [image, setImage] = useState('')
 
   const { showAlert, alertText, createPost, user, setHidePosts } =
     useContext(AppContext)
@@ -27,11 +28,6 @@ const CreatePostForm = () => {
     }))
   }
 
-  // setting user id to state
-  useEffect(() => {
-    setValues((prevState) => ({ ...prevState, createdBy: user._id }))
-  }, [])
-
   const handleSubmit = (e) => {
     e.preventDefault()
 
@@ -42,6 +38,29 @@ const CreatePostForm = () => {
       setHidePosts(false)
     }, 2000)
   }
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0]
+    transformFile(file)
+  }
+
+  const transformFile = (file) => {
+    const reader = new FileReader()
+
+    if (file) {
+      reader.readAsDataURL(file)
+      reader.onloadend = () => {
+        setImage(reader.result)
+        setValues((prevState) => ({ ...prevState, photo: reader.result }))
+      }
+    } else {
+      setImage('')
+    }
+  }
+  // setting user id to state
+  useEffect(() => {
+    setValues((prevState) => ({ ...prevState, createdBy: user._id }))
+  }, [])
 
   return (
     <>
@@ -63,6 +82,7 @@ const CreatePostForm = () => {
             type="file"
             accept="image/*"
             placeholder="Upload photo"
+            onChange={handleImageUpload}
           />
         </FormControl>
 

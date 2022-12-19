@@ -1,6 +1,6 @@
 const asyncHandler = require('express-async-handler')
-
 const Post = require('../models/postModel')
+const cloudinary = require('../utils/cloudinary')
 
 // GET - /api/v1/posts/:id
 const getPost = asyncHandler(async (req, res) => {
@@ -28,13 +28,43 @@ const getPosts = asyncHandler(async (req, res) => {
 
 // POST - /api/v1/posts
 const createPost = asyncHandler(async (req, res) => {
+  const { species, photo, bait, location, length, weight, createdBy } = req.body
+
   if (!req.body) {
     res.status(400)
     throw new Error('Please add text a field')
   }
 
-  const post = await Post.create(req.body)
-  res.status(200).json(post)
+  // checking to make sure user added image
+  try {
+    if (photo) {
+      const uploadRes = await cloudinary.uploader.upload(photo, {
+        upload_preset: 'UserPosts',
+      })
+
+      if (uploadRes) {
+        const post = new Post({
+          species,
+          photo: uploadRes,
+          bait,
+          location,
+          length,
+          weight,
+          // likes,
+          createdBy,
+        })
+
+        // const savedPost = await post.save()
+        console.log(post)
+        await Post.create(post)
+        res.status(200).json(post)
+      }
+    }
+  } catch (error) {
+    console.log(error)
+    res.status(500)
+    throw new Error('Something went wrong on our end')
+  }
 })
 
 // PATCH - /api/v1/posts/:id

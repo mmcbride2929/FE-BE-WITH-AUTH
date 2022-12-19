@@ -6,25 +6,12 @@
 
 - add clickable username of post creator that sends you to user profile
 
-To achieve by SUNDAY:
-
-TUES
-
-WED
-
-THUR
-
-FRI
-
-SAT
-
-SUN
-
 # MISC
 
-# create post
+- when deleting a post you should delete photo from cloudinary
+- when editing post you should swap photos in cloudinary
 
--add upload photo
+# create post
 
 - throw err when user enters string and not number for length and weight
 - pressing alt + left forwards user to edit single post?

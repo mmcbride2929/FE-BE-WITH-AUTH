@@ -1,4 +1,4 @@
-import React, { useState, useContext, useReducer } from 'react'
+import React, { useState, useReducer } from 'react'
 import axios from 'axios'
 
 import {
@@ -124,6 +124,7 @@ export const AppProvider = ({ children }) => {
         type: CREATE_POST_ERROR,
         payload: { msg: error.response.data.msg },
       })
+      console.log(error)
     }
     clearAlert()
   }
