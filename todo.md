@@ -1,30 +1,18 @@
 # currently working on
 
-# MISC
-
-- if not logged in, create post/ specific post pages should forward to landing
-
 # create post
-
-- instead of sharing interface with create post, we need to give create a page of its own.
-- post still posts if we add a .txt file, although cloud sends back error
 
 # edit post
 
 # home feed
 
-- when deleting post we need to delete cloudinary photo
-- when deleting on feed we need to prompt if successful
-- add like icon to posts
-- add an array of liked posts to user collection
-- create likePost func, that adds postID to users 'likedPosts' array within user collection
-- add clickable username of post creator
+- add like icon to posts \*\*\*
+- add an array of liked posts to user collection \*\*\*
+- create likePost func, that adds postID to users 'likedPosts' array within user collection\*\*\*
 
 # single post
 
-- add clickable username of post creator
-- need to impliment a link to the users profile
-- add like icon
+- add like icon\*\*\*
 
 # sign in / sign up
 
@@ -34,8 +22,12 @@
 
 # my profile / user profile
 
-- create toggle button
-- toggle between their liked posts and their own posts
-- edit profile button (name, description, photo)
+- create toggle button\*\*\*
+- toggle between their liked posts and their own posts\*\*\*
 
 # page not found
+
+# MISC
+
+- if not logged in, create post/ specific post pages should forward to landing
+- when creating a post, and forwarded to feed, we still see 'post created/updated' momentarily

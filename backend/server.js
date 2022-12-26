@@ -6,6 +6,7 @@ const cors = require('cors')
 // local imports
 const postRoutes = require('./routes/postRoutes')
 const authRoutes = require('./routes/authRoutes')
+const userRoutes = require('./routes/userRoutes')
 const { errorHandler } = require('./middleware/errorMiddleware')
 
 // connect db
@@ -22,6 +23,7 @@ app.use(express.urlencoded({ extended: false }))
 // routes
 app.use('/api/v1/auth', authRoutes)
 app.use('/api/v1/posts', postRoutes)
+app.use('/api/v1/user', userRoutes)
 
 // overwriting express default error handler
 app.use(errorHandler)

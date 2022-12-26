@@ -54,15 +54,13 @@ const createPost = asyncHandler(async (req, res) => {
           createdBy,
         })
 
-        // const savedPost = await post.save()
-        console.log(post)
         await Post.create(post)
         res.status(200).json(post)
       }
     }
   } catch (error) {
     console.log(error)
-    res.status(500)
+    res.status(500).json(error.message)
     throw new Error('Something went wrong on our end')
   }
 })
@@ -90,7 +88,11 @@ const deletePost = asyncHandler(async (req, res) => {
     throw new Error('No matching posts were found')
   }
 
+  // deleting image from cloudinary library
   const deletedPost = await Post.findByIdAndDelete(req.params.id)
+  const photoId = deletedPost.photo.public_id
+  await cloudinary.uploader.destroy(photoId)
+
   res.status(200).json(deletedPost)
 })
 

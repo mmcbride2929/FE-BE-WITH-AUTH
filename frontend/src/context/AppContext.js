@@ -37,6 +37,7 @@ export const initialState = {
 export const AppProvider = ({ children }) => {
   /* ******** state ******** */
   const [state, dispatch] = useReducer(reducer, initialState)
+  const [posts, setPosts] = useState([])
 
   /* ******** axios instance + header for token ******** */
   const authFetch = axios.create({
@@ -126,6 +127,16 @@ export const AppProvider = ({ children }) => {
     clearAlert()
   }
 
+  const fetchPosts = async () => {
+    try {
+      const data = await axios.get(`http://localhost:2121/api/v1/posts`)
+
+      setPosts(data.data)
+    } catch (error) {
+      console.log(error)
+    }
+  }
+
   const updatePost = async (post, path) => {
     try {
       await authFetch.patch(`http://localhost:2121/api/v1/posts/${path}`, post)
@@ -149,6 +160,7 @@ export const AppProvider = ({ children }) => {
       dispatch({
         type: DELETE_POST_SUCCESS,
       })
+      fetchPosts()
     } catch (error) {
       dispatch({
         type: DELETE_POST_ERROR,
@@ -176,7 +188,8 @@ export const AppProvider = ({ children }) => {
         displayAlert,
         clearAlert,
         loginUser,
-
+        fetchPosts,
+        posts,
         createPost,
         updatePost,
         deletePost,

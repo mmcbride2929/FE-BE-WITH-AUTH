@@ -13,6 +13,7 @@ import SinglePost from './pages/SinglePost'
 import EditPost from './pages/EditPost'
 import { useState } from 'react'
 import CreatePost from './pages/CreatePost'
+import ProfilePage from './components/UserProfile/ProfilePage'
 
 const App = () => {
   const [nav, setNav] = useState(true)
@@ -43,6 +44,10 @@ const App = () => {
               <Route
                 path="create-post"
                 element={<CreatePost setNav={setNav} />}
+              />
+              <Route
+                path="user/:id"
+                element={<ProfilePage setNav={setNav} />}
               />
             </Routes>
             <Footer />

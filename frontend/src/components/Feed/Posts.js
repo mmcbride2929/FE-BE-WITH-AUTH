@@ -1,32 +1,38 @@
 import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
+import AppContext from '../../context/AppContext'
 import Post from './Post'
 
 const Posts = () => {
-  const [posts, setPosts] = useState([])
   const [loading, setLoading] = useState(true)
+  const [users, setUsers] = useState([])
 
-  const fetchPosts = async () => {
-    try {
-      const data = await axios.get(`http://localhost:2121/api/v1/posts`)
+  const { fetchPosts, posts } = useContext(AppContext)
 
-      setPosts(data.data)
-      setLoading(false)
-    } catch (error) {
-      console.log(error)
-    }
+  const fetchUsers = async () => {
+    const data = await axios.get(`http://localhost:2121/api/v1/user`)
+    setUsers(data.data)
   }
 
   useEffect(() => {
     fetchPosts()
-  }, [posts])
+    fetchUsers()
+
+    setLoading(false)
+  }, [])
 
   return (
-    <div>
-      {posts.map((post) => {
-        return <Post key={post._id} post={post} posts={posts} />
-      })}
-    </div>
+    <>
+      {users.length === 0 ? (
+        <>LOADING</>
+      ) : (
+        <div>
+          {posts.map((post) => {
+            return <Post key={post._id} post={post} users={users} />
+          })}
+        </div>
+      )}
+    </>
   )
 }
 export default Posts
