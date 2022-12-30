@@ -49,8 +49,4 @@ const login = asyncHandler(async (req, res) => {
   res.status(StatusCodes.OK).json({ user, token })
 })
 
-const updateUser = asyncHandler(async (req, res) => {
-  res.status(200).send('update user')
-})
-
-module.exports = { register, login, updateUser }
+module.exports = { register, login }

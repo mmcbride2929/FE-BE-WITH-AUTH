@@ -50,7 +50,6 @@ const createPost = asyncHandler(async (req, res) => {
           location,
           length,
           weight,
-          // likes,
           createdBy,
         })
 
@@ -96,4 +95,10 @@ const deletePost = asyncHandler(async (req, res) => {
   res.status(200).json(deletedPost)
 })
 
-module.exports = { getPost, getPosts, createPost, updatePost, deletePost }
+module.exports = {
+  getPost,
+  getPosts,
+  createPost,
+  updatePost,
+  deletePost,
+}

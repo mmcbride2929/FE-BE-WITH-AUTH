@@ -17,6 +17,8 @@ import {
   DELETE_POST_ERROR,
   DELETE_POST_SUCCESS,
   LOGOUT_USER,
+  LIKE_POST_SUCCESS,
+  UNLIKE_POST_SUCCESS,
 } from './actions'
 import reducer from './reducer'
 
@@ -90,6 +92,7 @@ export const AppProvider = ({ children }) => {
       )
 
       const { user, token } = response.data
+
       dispatch({
         type: LOGIN_USER_SUCCESS,
         payload: { user, token },
@@ -170,9 +173,63 @@ export const AppProvider = ({ children }) => {
     clearAlert()
   }
 
+  const likePost = async (currentUser, postId) => {
+    // if the post is not liked yet
+    console.log(currentUser.likes)
+    if (!currentUser.likes.includes(postId)) {
+      console.log('added')
+
+      // adding post to user posts
+      currentUser.likes.push(postId)
+
+      try {
+        // sending updated user with added post
+        await authFetch.patch(
+          `http://localhost:2121/api/v1/user/${currentUser._id}`,
+          currentUser
+        )
+        dispatch({
+          type: LIKE_POST_SUCCESS,
+          payload: { currentUser },
+        })
+        // adding post to current user within local storage
+        updateUserFromLocalStorage(currentUser)
+        console.log(currentUser)
+      } catch (error) {
+        console.log(error)
+      }
+    } else {
+      // if user already likes post
+
+      console.log('deleted')
+      // remove likes from user array
+      const newArray = currentUser.likes.filter((like) => like !== postId)
+
+      currentUser.likes = newArray
+      console.log(currentUser)
+      try {
+        await authFetch.patch(
+          `http://localhost:2121/api/v1/user/${currentUser._id}`,
+          currentUser
+        )
+        dispatch({
+          type: UNLIKE_POST_SUCCESS,
+          payload: { currentUser },
+        })
+        updateUserFromLocalStorage(currentUser)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+  }
+
   const addUserToLocalStorage = ({ user, token }) => {
     localStorage.setItem('user', JSON.stringify(user))
     localStorage.setItem('token', token)
+  }
+
+  const updateUserFromLocalStorage = (user) => {
+    localStorage.setItem('user', JSON.stringify(user))
   }
 
   const removeUserFromLocalStorage = () => {
@@ -194,6 +251,7 @@ export const AppProvider = ({ children }) => {
         updatePost,
         deletePost,
         logoutUser,
+        likePost,
       }}
     >
       {children}

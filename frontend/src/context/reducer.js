@@ -14,6 +14,8 @@ import {
   DELETE_POST_ERROR,
   DELETE_POST_SUCCESS,
   LOGOUT_USER,
+  LIKE_POST_SUCCESS,
+  UNLIKE_POST_SUCCESS,
 } from './actions'
 
 import { initialState } from './AppContext'
@@ -154,6 +156,21 @@ const reducer = (state, action) => {
       showAlert: true,
       alertType: 'danger',
       alertText: 'Post Could Not Be Deleted',
+    }
+  }
+
+  if (action.type === LIKE_POST_SUCCESS) {
+    console.log(action.payload.currentUser)
+    return {
+      ...state,
+      user: action.payload.currentUser,
+    }
+  }
+
+  if (action.type === UNLIKE_POST_SUCCESS) {
+    return {
+      ...state,
+      user: action.payload.currentUser,
     }
   }
 

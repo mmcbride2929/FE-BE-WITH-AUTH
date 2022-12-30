@@ -1,18 +1,18 @@
 # currently working on
 
+- give like ability to single page post
+- giving feed, single post, profile page all of their specific data you want outputed
+
+- create toggle button\*\*\*
+- toggle between their liked posts and their own posts\*\*\*
+
 # create post
 
 # edit post
 
 # home feed
 
-- add like icon to posts \*\*\*
-- add an array of liked posts to user collection \*\*\*
-- create likePost func, that adds postID to users 'likedPosts' array within user collection\*\*\*
-
 # single post
-
-- add like icon\*\*\*
 
 # sign in / sign up
 
@@ -24,6 +24,7 @@
 
 - create toggle button\*\*\*
 - toggle between their liked posts and their own posts\*\*\*
+- add like, and conditional buttons to user feeds
 
 # page not found
 

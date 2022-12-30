@@ -27,6 +27,9 @@ const userSchema = mongoose.Schema(
       minLength: 6,
       select: false, // find method will not find by password
     },
+    likes: {
+      type: Array,
+    },
   },
   { timestamps: true }
 )
