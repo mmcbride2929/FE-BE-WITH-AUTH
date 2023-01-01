@@ -1,11 +1,12 @@
 import { Link as ReachLink } from 'react-router-dom'
-import { IconButton, Image, Link } from '@chakra-ui/react'
+import { Box, IconButton, Image, Link, Text, chakra } from '@chakra-ui/react'
 import { useContext, useEffect, useState } from 'react'
 import AppContext from '../../context/AppContext'
 import { DeleteIcon, EditIcon, StarIcon } from '@chakra-ui/icons'
 
 const Post = ({ post, users }) => {
-  const { species, photo, length, bait, _id, createdBy } = post
+  const { species, photo, weight, length, bait, location, _id, createdBy } =
+    post
 
   // getting user
   const { user, deletePost, likePost } = useContext(AppContext)
@@ -19,30 +20,30 @@ const Post = ({ post, users }) => {
 
   const matchUser = (postCreatorId) => {
     const postAuthor = users.filter((u) => u._id === postCreatorId)
-    setAuthor(postAuthor)
+    setAuthor(postAuthor[0])
   }
 
   useEffect(() => {
-    matchUser(createdBy)
+    if (users.length > 1) {
+      matchUser(createdBy)
+    } else {
+      setAuthor(users)
+    }
     setLoading(false)
   }, [])
 
   return loading ? (
     <>loading</>
   ) : (
-    <div>
-      <Link as={ReachLink} to={`/post/${_id}`}>
-        {species}
-      </Link>
-      <p>{length}</p>
-      <p>post id: ${_id}</p>
-      createdBy:{' '}
-      <Link as={ReachLink} to={`/user/${author[0]._id}`}>
-        <h1>{author[0].userName}</h1>
-      </Link>{' '}
-      userID: {author[0]._id}
-      <Image src={photo.url} w="100px" />
-      <div>
+    // entire container
+    <Box display="flex" flexDirection="column">
+      {/* image container */}
+      <Box>
+        <Image src={photo.url} w="100px" />
+      </Box>
+
+      {/* icon container */}
+      <Box>
         {createdBy === user._id ? (
           <>
             <Link as={ReachLink} to={`/edit-post/${_id}`}>
@@ -74,7 +75,7 @@ const Post = ({ post, users }) => {
         ) : (
           <></>
         )}
-      </div>
+      </Box>
       <IconButton
         onClick={() => likePost(user, _id)}
         variant="outline"
@@ -87,7 +88,57 @@ const Post = ({ post, users }) => {
         }}
         icon={<StarIcon />}
       />
-    </div>
+
+      {/* description container */}
+      <Box>
+        <chakra.p>
+          <Text as="span" fontWeight="bold">
+            {' '}
+            Angler:
+          </Text>{' '}
+          <Link as={ReachLink} to={`/user/${author._id}`}>
+            {author.userName}
+          </Link>
+        </chakra.p>
+        <chakra.p>
+          <Text as="span" fontWeight="bold">
+            {' '}
+            Species:
+          </Text>{' '}
+          <Link as={ReachLink} to={`/post/${_id}`}>
+            {species}
+          </Link>
+        </chakra.p>
+        <chakra.p>
+          <Text as="span" fontWeight="bold">
+            {' '}
+            Weight:
+          </Text>{' '}
+          {weight}
+        </chakra.p>
+        <chakra.p>
+          <Text as="span" fontWeight="bold">
+            {' '}
+            Length:
+          </Text>{' '}
+          {length}
+        </chakra.p>
+        <chakra.p>
+          <Text as="span" fontWeight="bold">
+            {' '}
+            Location:
+          </Text>{' '}
+          {location}
+        </chakra.p>
+        <chakra.p>
+          <Text as="span" fontWeight="bold">
+            {' '}
+            Bait:
+          </Text>{' '}
+          {bait}
+        </chakra.p>
+      </Box>
+    </Box>
   )
 }
 export default Post

@@ -4,7 +4,6 @@ import AppContext from '../../context/AppContext'
 import Post from './Post'
 
 const Posts = () => {
-  const [loading, setLoading] = useState(true)
   const [users, setUsers] = useState([])
 
   const { fetchPosts, posts } = useContext(AppContext)
@@ -17,8 +16,6 @@ const Posts = () => {
   useEffect(() => {
     fetchPosts()
     fetchUsers()
-
-    setLoading(false)
   }, [])
 
   return (

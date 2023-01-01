@@ -13,7 +13,7 @@ import SinglePost from './pages/SinglePost'
 import EditPost from './pages/EditPost'
 import { useState } from 'react'
 import CreatePost from './pages/CreatePost'
-import ProfilePage from './components/UserProfile/ProfilePage'
+import ProfilePage from './pages/ProfilePage'
 
 const App = () => {
   const [nav, setNav] = useState(true)

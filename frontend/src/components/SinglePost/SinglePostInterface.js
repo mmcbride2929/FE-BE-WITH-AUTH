@@ -8,7 +8,9 @@ import { ArrowBackIcon, DeleteIcon, EditIcon } from '@chakra-ui/icons'
 
 const SinglePostInterface = () => {
   const [post, setPost] = useState([])
-  const [loading, setLoading] = useState(true)
+
+  //  author state
+  const [author, setAuthor] = useState()
 
   // getting item ID from react router's parameter
   const location = useLocation()
@@ -23,10 +25,17 @@ const SinglePostInterface = () => {
     try {
       const data = await axios.get(`http://localhost:2121/api/v1/posts/${path}`)
       setPost(data.data)
-      setLoading(false)
+      getAuthor(data.data.createdBy)
     } catch (error) {
       console.log(error)
     }
+  }
+
+  const getAuthor = async (createdBy) => {
+    const response = await axios.get(
+      `http://localhost:2121/api/v1/user/${createdBy}`
+    )
+    setAuthor(response.data)
   }
 
   const handleDelete = () => {
@@ -38,25 +47,27 @@ const SinglePostInterface = () => {
 
   useEffect(() => {
     fetchPost()
-    setLoading(false)
   }, [])
 
   return (
     <>
-      <IconButton
-        onClick={() => navigate('/feed')}
-        variant="outline"
-        color={'white'}
-        bg="brand.300"
-        fontSize="20px"
-        _hover={{
-          color: 'brand.300',
-          bg: 'white',
-        }}
-        icon={<ArrowBackIcon />}
-      />
-      {user._id === post.createdBy ? (
+      {!post ? (
+        <>LOADING</>
+      ) : (
         <>
+          {/* interactive icons */}
+          <IconButton
+            onClick={() => navigate('/feed')}
+            variant="outline"
+            color={'white'}
+            bg="brand.300"
+            fontSize="20px"
+            _hover={{
+              color: 'brand.300',
+              bg: 'white',
+            }}
+            icon={<ArrowBackIcon />}
+          />
           <IconButton
             onClick={() => navigate(`/edit-post/${path}`)}
             variant="outline"
@@ -69,7 +80,6 @@ const SinglePostInterface = () => {
             }}
             icon={<EditIcon />}
           />
-
           <IconButton
             onClick={handleDelete}
             variant="outline"
@@ -82,16 +92,11 @@ const SinglePostInterface = () => {
             }}
             icon={<DeleteIcon />}
           />
+
+          {/* single post component */}
+
+          <SinglePost post={post} author={author} />
         </>
-      ) : (
-        <></>
-      )}
-      {!loading ? (
-        <>
-          {alertText && alertText} <SinglePost post={post} />
-        </>
-      ) : (
-        <>Loading</>
       )}
     </>
   )
