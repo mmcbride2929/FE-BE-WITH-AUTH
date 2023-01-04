@@ -74,6 +74,7 @@ const EditPostForm = () => {
               type="string"
               placeholder="Enter species"
               value={values.species}
+              maxLength={15}
             />
           </FormControl>
 
@@ -85,6 +86,7 @@ const EditPostForm = () => {
               type="string"
               placeholder="Enter bait"
               value={values.bait}
+              maxLength={15}
             />
           </FormControl>
 
@@ -95,6 +97,7 @@ const EditPostForm = () => {
             type="string"
             placeholder="Enter location"
             value={values.location}
+            maxLength={15}
           />
 
           <FormLabel>Length</FormLabel>

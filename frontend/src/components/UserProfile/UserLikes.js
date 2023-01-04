@@ -6,10 +6,13 @@ const UserLikes = ({ user }) => {
   const { fetchPosts, posts } = useContext(AppContext)
   const [loading, setLoading] = useState(true)
 
+  // bug
+  const test = [user]
+  console.log(test)
+
   useEffect(() => {
     fetchPosts()
     setLoading(false)
-    console.log(user)
   }, [])
 
   return (
@@ -21,7 +24,7 @@ const UserLikes = ({ user }) => {
           {posts
             .filter((post) => user.likes.includes(post._id))
             .map((post) => {
-              return <Post key={post._id} post={post} users={user} />
+              return <Post key={post._id} post={post} users={test} />
             })}
         </div>
       )}

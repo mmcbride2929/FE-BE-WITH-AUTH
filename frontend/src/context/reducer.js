@@ -160,7 +160,6 @@ const reducer = (state, action) => {
   }
 
   if (action.type === LIKE_POST_SUCCESS) {
-    console.log(action.payload.currentUser)
     return {
       ...state,
       user: action.payload.currentUser,

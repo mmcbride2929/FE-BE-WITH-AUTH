@@ -57,7 +57,7 @@ export const AppProvider = ({ children }) => {
   const clearAlert = () => {
     setTimeout(() => {
       dispatch({ type: CLEAR_ALERT })
-    }, 3000)
+    }, 2000)
   }
 
   const registerUser = async (currentUser) => {
@@ -175,10 +175,8 @@ export const AppProvider = ({ children }) => {
 
   const likePost = async (currentUser, postId) => {
     // if the post is not liked yet
-    console.log(currentUser.likes)
-    if (!currentUser.likes.includes(postId)) {
-      console.log('added')
 
+    if (!currentUser.likes.includes(postId)) {
       // adding post to user posts
       currentUser.likes.push(postId)
 
@@ -194,19 +192,17 @@ export const AppProvider = ({ children }) => {
         })
         // adding post to current user within local storage
         updateUserFromLocalStorage(currentUser)
-        console.log(currentUser)
       } catch (error) {
         console.log(error)
       }
     } else {
       // if user already likes post
 
-      console.log('deleted')
       // remove likes from user array
       const newArray = currentUser.likes.filter((like) => like !== postId)
 
       currentUser.likes = newArray
-      console.log(currentUser)
+
       try {
         await authFetch.patch(
           `http://localhost:2121/api/v1/user/${currentUser._id}`,
@@ -221,6 +217,7 @@ export const AppProvider = ({ children }) => {
         console.log(error)
       }
     }
+    fetchPosts()
   }
 
   const addUserToLocalStorage = ({ user, token }) => {

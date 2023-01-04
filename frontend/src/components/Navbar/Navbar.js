@@ -14,6 +14,7 @@ import {
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
+  Image,
 } from '@chakra-ui/react'
 import {
   HamburgerIcon,
@@ -24,6 +25,7 @@ import {
 import { Link as ReachLink } from 'react-router-dom'
 import { useContext } from 'react'
 import AppContext from '../../context/AppContext'
+import logo from '../../assets/logo.png'
 
 const Navbar = () => {
   const { isOpen, onToggle } = useDisclosure()
@@ -63,7 +65,7 @@ const Navbar = () => {
             color={useColorModeValue('gray.800', 'white')}
           >
             <Link as={ReachLink} to="/feed" onClick={() => setHidePosts(false)}>
-              Logo
+              <Image src={logo} />
             </Link>
           </Text>
 

@@ -93,9 +93,7 @@ const SinglePost = ({ post, author }) => {
             {' '}
             Species:
           </Text>{' '}
-          <Link as={ReachLink} to={`/post/${_id}`}>
-            {species}
-          </Link>
+          {species}
         </chakra.p>
         <chakra.p>
           <Text as="span" fontWeight="bold">

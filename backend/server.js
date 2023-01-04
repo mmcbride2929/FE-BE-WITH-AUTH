@@ -2,6 +2,7 @@ const express = require('express')
 const dotenv = require('dotenv').config()
 const port = process.env.PORT || 5000
 const cors = require('cors')
+const bodyParser = require('body-parser')
 
 // local imports
 const postRoutes = require('./routes/postRoutes')
@@ -17,8 +18,11 @@ const app = express()
 
 // middleware
 app.use(cors())
+app.use(bodyParser.json({ limit: '50mb' }))
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }))
+
+//app.use(express.urlencoded({ extended: false }))
 app.use(express.json())
-app.use(express.urlencoded({ extended: false }))
 
 // routes
 app.use('/api/v1/auth', authRoutes)

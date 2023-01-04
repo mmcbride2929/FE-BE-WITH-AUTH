@@ -75,6 +75,7 @@ const CreatePostForm = () => {
             type="string"
             placeholder="Enter species"
             value={values.species}
+            maxLength={15}
           />
         </FormControl>
         <FormControl isRequired>
@@ -96,6 +97,7 @@ const CreatePostForm = () => {
             type="string"
             placeholder="Enter bait"
             value={values.bait}
+            maxLength={15}
           />
         </FormControl>
 
@@ -106,6 +108,7 @@ const CreatePostForm = () => {
           type="string"
           placeholder="Enter location"
           value={values.location}
+          maxLength={15}
         />
 
         <FormLabel>Length</FormLabel>
@@ -115,6 +118,8 @@ const CreatePostForm = () => {
           type="number"
           placeholder="Enter length"
           value={values.length}
+          min="0"
+          max="100"
         />
 
         <FormLabel>Weight</FormLabel>
@@ -124,6 +129,8 @@ const CreatePostForm = () => {
           type="number"
           placeholder="Enter weight"
           value={values.weight}
+          min="0"
+          max="100"
         />
         {showAlert ? <p>{alertText}</p> : ''}
         <Button
