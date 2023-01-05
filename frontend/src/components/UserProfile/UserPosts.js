@@ -8,7 +8,7 @@ const UserPosts = ({ user }) => {
 
   // bug
   const test = [user]
-  console.log(test)
+
   // the users prop was passed as just an object, but the post reads the data as if it were coming from an array
 
   useEffect(() => {

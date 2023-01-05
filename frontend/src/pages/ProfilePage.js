@@ -5,7 +5,6 @@ import { useLocation } from 'react-router-dom'
 
 import UserInterface from '../components/UserProfile/UserInterface'
 import UserLikes from '../components/UserProfile/UserLikes'
-import UserPhoto from '../components/UserProfile/UserPhoto'
 import UserPosts from '../components/UserProfile/UserPosts'
 
 const ProfilePage = () => {
@@ -53,24 +52,29 @@ const ProfilePage = () => {
   return !user ? (
     <>LOADING</>
   ) : (
-    <>
-      <UserPhoto />
+    <Box bg="brand.100" p="25px">
       <UserInterface user={user} formattedDate={formattedDate} />
 
       {/* toggle between users posts and likes */}
-      <Button
-        onClick={handleToggleFeed}
-        colorScheme={feedToggle === 'posts' ? 'red' : 'teal'}
-        variant="outline"
-      >
-        View {feedToggle === 'posts' ? 'Likes' : 'Posts'}
-      </Button>
-
+      <Box display="flex" alignItems="center">
+        <Box w="50%">
+          <chakra.h1 fontWeight="bold" fontSize="1.1rem">
+            {user.userName}'s {feedToggle}
+          </chakra.h1>
+        </Box>
+        <Box w="50%" display="flex" justifyContent="right">
+          <Button
+            onClick={handleToggleFeed}
+            colorScheme={feedToggle === 'posts' ? 'red' : 'teal'}
+            variant="outline"
+            w="100px"
+          >
+            View {feedToggle === 'posts' ? 'Likes' : 'Posts'}
+          </Button>
+        </Box>
+      </Box>
       {/* feed toggle container */}
       <Box>
-        <chakra.h1>
-          {user.userName}'s {feedToggle}
-        </chakra.h1>
         {feedToggle === 'posts' ? (
           <UserPosts user={user} />
         ) : (
@@ -79,7 +83,7 @@ const ProfilePage = () => {
           </>
         )}
       </Box>
-    </>
+    </Box>
   )
 }
 export default ProfilePage

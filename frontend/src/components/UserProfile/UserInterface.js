@@ -1,13 +1,40 @@
-import { Box, chakra } from '@chakra-ui/react'
+import { Box, chakra, Flex } from '@chakra-ui/react'
+import UserPhoto from '../UserProfile/UserPhoto'
 
 const UserInterface = ({ user, formattedDate }) => {
   const { userName } = user
 
   return user ? (
     <>
-      <chakra.p>{userName}</chakra.p>
+      <Flex p={50} w="full" alignItems="center" justifyContent="center">
+        <Box
+          w="100%"
+          bg="white"
+          shadow="lg"
+          rounded="lg"
+          overflow="hidden"
+          mx="auto"
+        >
+          <UserPhoto />
 
-      <chakra.p>{formattedDate}</chakra.p>
+          <Box py={3} textAlign="center">
+            <chakra.h1
+              display="block"
+              fontSize="1.4rem"
+              color="gray.800"
+              fontWeight="bold"
+            >
+              {userName}
+            </chakra.h1>
+            <chakra.p>
+              Joined:{' '}
+              <chakra.span fontSize="sm" color="gray.700">
+                {formattedDate}
+              </chakra.span>
+            </chakra.p>
+          </Box>
+        </Box>
+      </Flex>
     </>
   ) : (
     <>LOADING</>

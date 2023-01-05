@@ -2,7 +2,8 @@
 
 - when a user that is logged in and dislikes photos do not disappear (profile page)
 
-- fixed bug on user like and posts
+- fix navbar bug with user profile icon
+- heart hover isn't working
 
 # create post
 
@@ -26,6 +27,7 @@
 
 - if not logged in, create post/ specific post pages should forward to landing
 
+- creating user bug
 - pick color scheme
 - do all on hovers, profile name, navButtons, etc
 

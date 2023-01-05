@@ -1,11 +1,11 @@
-import { Image } from '@chakra-ui/react'
+import { Box, Image } from '@chakra-ui/react'
 import photo from '../../assets/profile-picture.png'
 
 const UserPhoto = () => {
   return (
-    <div>
+    <Box display="flex" justifyContent="center" p="10px" mt="10px">
       <Image src={photo} w={'100px'} borderRadius={'50px'} />
-    </div>
+    </Box>
   )
 }
 export default UserPhoto

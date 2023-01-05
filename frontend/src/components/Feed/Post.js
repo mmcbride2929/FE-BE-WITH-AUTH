@@ -2,7 +2,8 @@ import { Link as ReachLink } from 'react-router-dom'
 import { Box, IconButton, Image, Link, Text, chakra } from '@chakra-ui/react'
 import { useContext, useEffect, useState } from 'react'
 import AppContext from '../../context/AppContext'
-import { DeleteIcon, EditIcon, StarIcon } from '@chakra-ui/icons'
+import { DeleteIcon, EditIcon } from '@chakra-ui/icons'
+import { BsHeart, BsFillHeartFill } from 'react-icons/bs'
 
 const Post = ({ post, users }) => {
   const { species, photo, weight, length, bait, location, _id, createdBy } =
@@ -13,7 +14,6 @@ const Post = ({ post, users }) => {
 
   const [author, setAuthor] = useState()
   const [loading, setLoading] = useState(true)
-  const [test, setTest] = useState('')
 
   const handleDelete = () => {
     deletePost(_id)
@@ -21,15 +21,16 @@ const Post = ({ post, users }) => {
 
   const matchUser = (postCreatorId) => {
     const postAuthor = users.filter((u) => u._id === postCreatorId)
+    console.log(postAuthor[0])
     setAuthor(postAuthor[0])
   }
 
   useEffect(() => {
-    if (users.length > 1) {
-      matchUser(createdBy)
-    } else {
-      setAuthor(users[0])
-    }
+    // do we even need to have in if statement?
+    // can we just run match user?
+    console.log(createdBy)
+    matchUser(createdBy)
+
     setLoading(false)
   }, [])
 
@@ -52,10 +53,9 @@ const Post = ({ post, users }) => {
         <chakra.p fontWeight="bold" py="5px" px="10px" fontSize="1.05rem">
           <Link
             as={ReachLink}
-            to={'/user/63b45ecff2a19c0832fd28f7'}
-            // 63b45ecff2a19c0832fd28f7
+            to={`/user/${author._id}`}
             _hover={{
-              color: 'brand.400',
+              color: 'grey',
             }}
           >
             {author.userName}
@@ -78,50 +78,50 @@ const Post = ({ post, users }) => {
       </Box>
 
       {/* icon container */}
-      <Box pt="5px" px="10px" mt="5px">
-        <IconButton
-          onClick={() => likePost(user, _id)}
-          variant="outline"
-          color={user.likes.includes(post._id) ? 'gold' : 'silver'}
-          bg="brand.300"
-          h="35px"
-          fontSize="20px"
-          _hover={{
-            color: 'brand.300',
-            bg: 'white',
-          }}
-          icon={<StarIcon w="17px" />}
-        />
+      <Box pt="5px" px="10px" mt="5px" display="flex" alignItems="center">
+        {user.likes.includes(post._id) ? (
+          <BsFillHeartFill
+            className="icon heart"
+            size={'22px'}
+            w="19px"
+            color="red"
+            onClick={() => likePost(user, _id)}
+          />
+        ) : (
+          <BsHeart
+            display="inline"
+            className="icon"
+            size={'22px'}
+            w="19px"
+            color="silver"
+            onClick={() => likePost(user, _id)}
+          />
+        )}
         {createdBy === user._id ? (
           <>
             {/* Post Image */}
             <Link as={ReachLink} to={`/edit-post/${_id}`}>
-              <IconButton
-                variant="outline"
-                color={'white'}
-                bg="brand.300"
-                h="35px"
-                fontSize="20px"
-                mx="5px"
+              <EditIcon
+                w="27px"
+                color="silver"
+                h="23px"
+                mx="15px"
+                mb="1px"
                 _hover={{
-                  color: 'brand.300',
-                  bg: 'white',
+                  color: 'brand.400',
                 }}
-                icon={<EditIcon w="17px" />}
               />
             </Link>
-            <IconButton
-              onClick={handleDelete}
-              variant="outline"
-              color={'white'}
-              bg="brand.300"
-              h="35px"
+            <DeleteIcon
+              className="icon"
+              w="27px"
+              color="silver"
+              h="22px"
               fontSize="20px"
               _hover={{
-                color: 'brand.300',
-                bg: 'white',
+                color: 'brand.400',
               }}
-              icon={<DeleteIcon w="17px" />}
+              onClick={handleDelete}
             />
           </>
         ) : (
@@ -145,14 +145,14 @@ const Post = ({ post, users }) => {
             {' '}
             Weight:
           </Text>{' '}
-          {weight.toString().substring(0, 3)}
+          {weight.toString().substring(0, 3)} lbs.
         </chakra.p>
         <chakra.p>
           <Text as="span" fontWeight="bold">
             {' '}
             Length:
           </Text>{' '}
-          {length.toString().substring(0, 3)}
+          {length.toString().substring(0, 3)}".
         </chakra.p>
         <chakra.p>
           <Text as="span" fontWeight="bold">

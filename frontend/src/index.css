@@ -4,3 +4,15 @@
   box-sizing: border-box;
   font-family: 'Manrope', sans-serif;
 }
+
+.heart:hover {
+  fill: red;
+}
+
+.icon:hover {
+  cursor: pointer;
+}
+
+.heart {
+  display: inline-block;
+}
