@@ -1,31 +1,34 @@
 import { useContext, useEffect, useState } from 'react'
 import AppContext from '../../context/AppContext'
 import Post from '../Feed/Post'
+import axios from 'axios'
 
 const UserPosts = ({ user }) => {
   const { fetchPosts, posts } = useContext(AppContext)
+  const [users, setUsers] = useState([])
   const [loading, setLoading] = useState(true)
 
-  // bug
-  const test = [user]
-
-  // the users prop was passed as just an object, but the post reads the data as if it were coming from an array
+  const fetchUsers = async () => {
+    const data = await axios.get(`http://localhost:2121/api/v1/user`)
+    setUsers(data.data)
+  }
 
   useEffect(() => {
     fetchPosts()
+    fetchUsers()
     setLoading(false)
   }, [])
 
   return (
     <>
-      {loading ? (
+      {users.length === 0 ? (
         <>LOADING</>
       ) : (
         <div>
           {posts
             .filter((post) => post.createdBy === user._id)
             .map((post) => {
-              return <Post key={post._id} post={post} users={test} />
+              return <Post key={post._id} post={post} users={users} />
             })}
         </div>
       )}

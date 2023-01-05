@@ -1,5 +1,6 @@
 import { Box, chakra, Flex } from '@chakra-ui/react'
 import UserPhoto from '../UserProfile/UserPhoto'
+import FeedToggleButton from './FeedToggleButton'
 
 const UserInterface = ({ user, formattedDate }) => {
   const { userName } = user
@@ -32,6 +33,7 @@ const UserInterface = ({ user, formattedDate }) => {
                 {formattedDate}
               </chakra.span>
             </chakra.p>
+            <FeedToggleButton />
           </Box>
         </Box>
       </Flex>

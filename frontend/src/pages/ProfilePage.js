@@ -1,17 +1,19 @@
-import { Box, Button, chakra } from '@chakra-ui/react'
+import { Box, chakra } from '@chakra-ui/react'
 import axios from 'axios'
-import { useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
 import UserInterface from '../components/UserProfile/UserInterface'
 import UserLikes from '../components/UserProfile/UserLikes'
 import UserPosts from '../components/UserProfile/UserPosts'
+import AppContext from '../context/AppContext'
 
 const ProfilePage = () => {
   const [user, setUser] = useState()
   const [loading, setLoading] = useState(true)
   const [formattedDate, setFormattedDate] = useState('')
-  const [feedToggle, setFeedToggle] = useState('posts')
+
+  const { feedToggle, setFeedToggle } = useContext(AppContext)
 
   //getting item ID from react router's parameter
   const location = useLocation()
@@ -35,15 +37,6 @@ const ProfilePage = () => {
     setFormattedDate(formatComplete)
   }
 
-  const handleToggleFeed = () => {
-    if (feedToggle === 'posts') {
-      setFeedToggle('likes')
-    }
-    if (feedToggle === 'likes') {
-      setFeedToggle('posts')
-    }
-  }
-
   useEffect(() => {
     fetchUser()
     setLoading(false)
@@ -61,16 +54,6 @@ const ProfilePage = () => {
           <chakra.h1 fontWeight="bold" fontSize="1.1rem">
             {user.userName}'s {feedToggle}
           </chakra.h1>
-        </Box>
-        <Box w="50%" display="flex" justifyContent="right">
-          <Button
-            onClick={handleToggleFeed}
-            colorScheme={feedToggle === 'posts' ? 'red' : 'teal'}
-            variant="outline"
-            w="100px"
-          >
-            View {feedToggle === 'posts' ? 'Likes' : 'Posts'}
-          </Button>
         </Box>
       </Box>
       {/* feed toggle container */}

@@ -4,6 +4,7 @@
 
 - fix navbar bug with user profile icon
 - heart hover isn't working
+- single post page has duplicate edit delete buttons
 
 # create post
 

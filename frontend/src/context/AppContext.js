@@ -41,6 +41,9 @@ export const AppProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState)
   const [posts, setPosts] = useState([])
 
+  // Profile Page feed
+  const [feedToggle, setFeedToggle] = useState('posts')
+
   /* ******** axios instance + header for token ******** */
   const authFetch = axios.create({
     headers: {
@@ -249,6 +252,8 @@ export const AppProvider = ({ children }) => {
         deletePost,
         logoutUser,
         likePost,
+        feedToggle,
+        setFeedToggle,
       }}
     >
       {children}
