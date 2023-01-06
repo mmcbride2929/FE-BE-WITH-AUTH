@@ -19,12 +19,13 @@ const FeedToggleButton = () => {
   }, [])
 
   return (
-    <Box w="50%" display="flex" justifyContent="right">
+    <Box w="50%" display="flex" justifyContent="center" mt="10px" p="5px">
       <Button
         onClick={handleToggleFeed}
         colorScheme={feedToggle === 'posts' ? 'red' : 'teal'}
         variant="outline"
-        w="100px"
+        w="85px"
+        size="sm"
       >
         View {feedToggle === 'posts' ? 'Likes' : 'Posts'}
       </Button>

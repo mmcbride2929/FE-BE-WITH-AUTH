@@ -5,6 +5,7 @@
   font-family: 'Manrope', sans-serif;
 }
 
+/* posts */
 .heart:hover {
   fill: red;
 }
@@ -15,4 +16,14 @@
 
 .heart {
   display: inline-block;
+}
+
+/* create a post */
+
+input[type='file']::file-selector-button {
+  width: 35%;
+  height: 100%;
+  border: 1px solid silver;
+  background-color: whitesmoke;
+  color: black;
 }

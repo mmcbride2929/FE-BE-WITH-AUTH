@@ -5,7 +5,7 @@ import { Link as ReachLink } from 'react-router-dom'
 import AppContext from '../../context/AppContext'
 import { useContext } from 'react'
 
-const Nav = () => {
+const Nav = ({ setNav }) => {
   const { logoutUser, user } = useContext(AppContext)
 
   return (
@@ -27,9 +27,9 @@ const Nav = () => {
                   bg: 'brand.400',
                 }}
               >
-                {/* <Link as={ReachLink} to={`/user/${_id}`}>
+                <Link as={ReachLink} to={`/user/${user._id}`}>
                   <BsPersonFill size="20px" fill="white" />
-                </Link> */}
+                </Link>
               </Button>
 
               <Button
@@ -42,7 +42,11 @@ const Nav = () => {
                 }}
               >
                 <Link as={ReachLink} to="/landing">
-                  <BsDoorOpen size="20px" fill="white" />
+                  <BsDoorOpen
+                    onClick={() => setNav(false)}
+                    size="20px"
+                    fill="white"
+                  />
                 </Link>
               </Button>
             </Stack>

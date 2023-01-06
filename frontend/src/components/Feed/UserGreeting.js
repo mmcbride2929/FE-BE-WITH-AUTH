@@ -12,7 +12,7 @@ const UserGreeting = () => {
       justifyContent="center"
       alignItems="center"
       flexDirection="column"
-      p={50}
+      py={50}
     >
       {/* Header */}
       <Box>

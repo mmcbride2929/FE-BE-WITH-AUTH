@@ -16,7 +16,7 @@ import CreatePost from './pages/CreatePost'
 import ProfilePage from './pages/ProfilePage'
 
 const App = () => {
-  const [nav, setNav] = useState(true)
+  const [nav, setNav] = useState(false)
   return (
     <>
       <ChakraProvider theme={myTheme}>

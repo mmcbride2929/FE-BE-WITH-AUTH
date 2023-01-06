@@ -47,6 +47,7 @@ const Post = ({ post, users }) => {
       borderColor="silver"
       borderRadius="5px"
       my="15px"
+      shadow="md"
     >
       {/* Post Creator Username */}
       <Box>
@@ -136,7 +137,13 @@ const Post = ({ post, users }) => {
             {' '}
             Species:
           </Text>{' '}
-          <Link as={ReachLink} to={`/post/${_id}`}>
+          <Link
+            as={ReachLink}
+            to={`/post/${_id}`}
+            _hover={{
+              color: 'grey',
+            }}
+          >
             {species}
           </Link>
         </chakra.p>

@@ -1,7 +1,15 @@
-import { Button, FormControl, FormLabel, Input } from '@chakra-ui/react'
+import {
+  Button,
+  FormControl,
+  FormLabel,
+  chakra,
+  Box,
+  Input,
+} from '@chakra-ui/react'
 import { useContext, useEffect, useState } from 'react'
 import AppContext from '../../context/AppContext'
 import { useNavigate } from 'react-router-dom'
+import { ArrowBackIcon } from '@chakra-ui/icons'
 
 const initialState = {
   species: '',
@@ -65,10 +73,17 @@ const CreatePostForm = () => {
   }, [])
 
   return (
-    <>
+    <Box
+      bg="white"
+      p="25px"
+      w="100%"
+      border="1px"
+      borderColor="silver"
+      borderRadius="5px"
+    >
       <form onSubmit={handleSubmit}>
         <FormControl isRequired>
-          <FormLabel>Species</FormLabel>
+          <FormLabel mb="1px">Species</FormLabel>
           <Input
             name="species"
             onChange={handleChange}
@@ -79,8 +94,11 @@ const CreatePostForm = () => {
           />
         </FormControl>
         <FormControl isRequired>
-          <FormLabel>Photo</FormLabel>
+          <FormLabel mt="6px" mb="1px">
+            Photo
+          </FormLabel>
           <Input
+            p="0px"
             name="photo"
             type="file"
             accept="image/*"
@@ -90,7 +108,9 @@ const CreatePostForm = () => {
         </FormControl>
 
         <FormControl isRequired>
-          <FormLabel>Bait Type</FormLabel>
+          <FormLabel mt="6px" mb="1px">
+            Bait Type
+          </FormLabel>
           <Input
             name="bait"
             onChange={handleChange}
@@ -101,7 +121,9 @@ const CreatePostForm = () => {
           />
         </FormControl>
 
-        <FormLabel>Location</FormLabel>
+        <FormLabel mt="6px" mb="1px">
+          Location
+        </FormLabel>
         <Input
           name="location"
           onChange={handleChange}
@@ -111,7 +133,9 @@ const CreatePostForm = () => {
           maxLength={15}
         />
 
-        <FormLabel>Length</FormLabel>
+        <FormLabel mt="6px" mb="1px">
+          Length
+        </FormLabel>
         <Input
           name="length"
           onChange={handleChange}
@@ -122,7 +146,9 @@ const CreatePostForm = () => {
           max="100"
         />
 
-        <FormLabel>Weight</FormLabel>
+        <FormLabel mt="6px" mb="1px">
+          Weight
+        </FormLabel>
         <Input
           name="weight"
           onChange={handleChange}
@@ -132,20 +158,49 @@ const CreatePostForm = () => {
           min="0"
           max="100"
         />
-        {showAlert ? <p>{alertText}</p> : ''}
-        <Button
-          type="submit"
-          size="lg"
-          bg={'brand.200'}
-          _hover={{
-            bg: 'brand.300',
-          }}
-          color={'white  '}
-        >
-          Submit
-        </Button>
+        {showAlert ? (
+          <chakra.p
+            textAlign="center"
+            p="5px"
+            fontSize="0.9rem"
+            fontWeight="bold"
+          >
+            {alertText}
+          </chakra.p>
+        ) : (
+          <Box p="5px" h="31.8px"></Box>
+        )}
+        <Box display="flex" justifyContent="center">
+          <Button
+            type="submit"
+            size="md"
+            color={'white'}
+            bg={'brand.500'}
+            mt="25px"
+            mx="10px"
+            _hover={{
+              bg: 'brand.400',
+            }}
+          >
+            Submit
+          </Button>
+
+          <Button
+            onClick={() => navigate('/feed')}
+            size="md"
+            color={'white'}
+            bg={'brand.500'}
+            mt="25px"
+            mx="10px"
+            _hover={{
+              bg: 'brand.400',
+            }}
+          >
+            Back
+          </Button>
+        </Box>
       </form>
-    </>
+    </Box>
   )
 }
 export default CreatePostForm

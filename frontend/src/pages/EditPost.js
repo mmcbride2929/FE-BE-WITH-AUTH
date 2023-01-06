@@ -1,28 +1,16 @@
-import { ArrowBackIcon } from '@chakra-ui/icons'
-import { IconButton } from '@chakra-ui/react'
-import { useNavigate } from 'react-router-dom'
 import EditPostInterface from '../components/EditPost/EditPostInterface'
+import EditPostHeader from '../components/EditPost/EditPostHeader'
+import { Box } from '@chakra-ui/react'
 
 const EditPost = ({ setNav }) => {
   // hiding navbar if not logged in
   setNav(true)
 
-  const navigate = useNavigate()
   return (
-    <>
-      <IconButton
-        onClick={() => navigate('/feed')}
-        variant="outline"
-        color={'white'}
-        bg={'brand.200'}
-        fontSize="20px"
-        _hover={{
-          bg: 'brand.300',
-        }}
-        icon={<ArrowBackIcon />}
-      />
+    <Box p="25px">
+      <EditPostHeader />
       <EditPostInterface />
-    </>
+    </Box>
   )
 }
 export default EditPost

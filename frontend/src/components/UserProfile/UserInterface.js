@@ -7,18 +7,26 @@ const UserInterface = ({ user, formattedDate }) => {
 
   return user ? (
     <>
-      <Flex p={50} w="full" alignItems="center" justifyContent="center">
+      <Flex p={50} w="full">
         <Box
           w="100%"
           bg="white"
-          shadow="lg"
-          rounded="lg"
+          border="1px"
+          borderColor="silver"
+          borderRadius="5px"
+          shadow="md"
           overflow="hidden"
           mx="auto"
         >
           <UserPhoto />
 
-          <Box py={3} textAlign="center">
+          <Box
+            py={3}
+            display="flex"
+            flexDirection="column"
+            justifyContent="center"
+            alignItems="center"
+          >
             <chakra.h1
               display="block"
               fontSize="1.4rem"

@@ -1,4 +1,4 @@
-import { Button, FormControl, FormLabel, Input } from '@chakra-ui/react'
+import { Box, Button, FormControl, FormLabel, Input } from '@chakra-ui/react'
 import { useContext, useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import AppContext from '../../context/AppContext'
@@ -65,71 +65,107 @@ const EditPostForm = () => {
       {loading ? (
         <>Loading</>
       ) : (
-        <form onSubmit={handleSubmit}>
-          <FormControl isRequired>
-            <FormLabel>Species</FormLabel>
+        <Box
+          bg="white"
+          p="25px"
+          w="100%"
+          border="1px"
+          borderColor="silver"
+          borderRadius="5px"
+        >
+          <form onSubmit={handleSubmit}>
+            <FormControl isRequired>
+              <FormLabel mb="1px">Species</FormLabel>
+              <Input
+                name="species"
+                onChange={handleChange}
+                type="string"
+                placeholder="Enter species"
+                value={values.species}
+                maxLength={15}
+              />
+            </FormControl>
+
+            <FormControl isRequired>
+              <FormLabel mt="6px" mb="1px">
+                Bait Type
+              </FormLabel>
+              <Input
+                name="bait"
+                onChange={handleChange}
+                type="string"
+                placeholder="Enter bait"
+                value={values.bait}
+                maxLength={15}
+              />
+            </FormControl>
+
+            <FormLabel mt="6px" mb="1px">
+              Location
+            </FormLabel>
             <Input
-              name="species"
+              name="location"
               onChange={handleChange}
               type="string"
-              placeholder="Enter species"
-              value={values.species}
+              placeholder="Enter location"
+              value={values.location}
               maxLength={15}
             />
-          </FormControl>
 
-          <FormControl isRequired>
-            <FormLabel>Bait Type</FormLabel>
+            <FormLabel mt="6px" mb="1px">
+              Length
+            </FormLabel>
             <Input
-              name="bait"
+              name="length"
               onChange={handleChange}
-              type="string"
-              placeholder="Enter bait"
-              value={values.bait}
-              maxLength={15}
+              type="number"
+              placeholder="Enter length"
+              value={values.length}
             />
-          </FormControl>
 
-          <FormLabel>Location</FormLabel>
-          <Input
-            name="location"
-            onChange={handleChange}
-            type="string"
-            placeholder="Enter location"
-            value={values.location}
-            maxLength={15}
-          />
+            <FormLabel mt="6px" mb="1px">
+              Weight
+            </FormLabel>
+            <Input
+              name="weight"
+              onChange={handleChange}
+              type="number"
+              placeholder="Enter weight"
+              value={values.weight}
+            />
+            {showAlert ? <p>{alertText}</p> : ''}
+            <Box display="flex" justifyContent="center">
+              <Button
+                type="submit"
+                size="md"
+                color={'white'}
+                bg={'brand.500'}
+                mt="25px"
+                mx="10px"
+                _hover={{
+                  bg: 'brand.400',
+                }}
+              >
+                Submit
+              </Button>
 
-          <FormLabel>Length</FormLabel>
-          <Input
-            name="length"
-            onChange={handleChange}
-            type="number"
-            placeholder="Enter length"
-            value={values.length}
-          />
-
-          <FormLabel>Weight</FormLabel>
-          <Input
-            name="weight"
-            onChange={handleChange}
-            type="number"
-            placeholder="Enter weight"
-            value={values.weight}
-          />
-          {showAlert ? <p>{alertText}</p> : ''}
-          <Button
-            type="submit"
-            bg={'brand.200'}
-            _hover={{
-              bg: 'brand.300',
-            }}
-            color={'white  '}
-          >
-            Submit
-          </Button>
-        </form>
-      )}{' '}
+              <Button
+                onClick={() => navigate('/feed')}
+                size="md"
+                color={'white'}
+                bg={'brand.500'}
+                mt="25px"
+                mx="10px"
+                _hover={{
+                  bg: 'brand.400',
+                }}
+              >
+                Back
+              </Button>
+            </Box>
+          </form>
+        </Box>
+      )}
     </>
   )
 }

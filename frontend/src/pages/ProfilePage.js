@@ -45,13 +45,13 @@ const ProfilePage = () => {
   return !user ? (
     <>LOADING</>
   ) : (
-    <Box bg="brand.100" p="25px">
+    <Box bg="brand.100" p="25px" minH="84vh">
       <UserInterface user={user} formattedDate={formattedDate} />
 
       {/* toggle between users posts and likes */}
       <Box display="flex" alignItems="center">
-        <Box w="50%">
-          <chakra.h1 fontWeight="bold" fontSize="1.1rem">
+        <Box w="100%">
+          <chakra.h1 textAlign="center" fontWeight="bold" fontSize="1.1rem">
             {user.userName}'s {feedToggle}
           </chakra.h1>
         </Box>

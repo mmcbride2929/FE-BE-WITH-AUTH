@@ -2,9 +2,12 @@
 
 - when a user that is logged in and dislikes photos do not disappear (profile page)
 
-- fix navbar bug with user profile icon
 - heart hover isn't working
 - single post page has duplicate edit delete buttons
+- went on profile one, and visiting profile two, clicking profile ones page title or the profile page button it does not navigate
+- when scrolled down, clicking likes causes jitter on user page
+- fix all loading code and make it consistent
+- edit appearances of all loading
 
 # create post
 
@@ -28,8 +31,8 @@
 
 - if not logged in, create post/ specific post pages should forward to landing
 
-- creating user bug
-- pick color scheme
+- logout bug
+
 - do all on hovers, profile name, navButtons, etc
 
 # Questions

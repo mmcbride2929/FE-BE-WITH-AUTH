@@ -13,11 +13,7 @@ import logo from '../../assets/logo.png'
 
 const Footer = () => {
   return (
-    <Box
-      mt="auto"
-      bg={useColorModeValue('gray.50', 'gray.900')}
-      color={useColorModeValue('gray.700', 'gray.200')}
-    >
+    <Box mt="auto" bg="white" color={useColorModeValue('gray.700', 'gray.200')}>
       <Container
         as={Stack}
         maxW={'6xl'}
