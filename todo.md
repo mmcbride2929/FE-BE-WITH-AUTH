@@ -5,6 +5,7 @@
 - heart hover isn't working
 - single post page has duplicate edit delete buttons
 - went on profile one, and visiting profile two, clicking profile ones page title or the profile page button it does not navigate
+- when on profile one, then visiting profile two, while on profile two you cannot log out
 - when scrolled down, clicking likes causes jitter on user page
 - fix all loading code and make it consistent
 - edit appearances of all loading

@@ -20,15 +20,41 @@ const FeedToggleButton = () => {
 
   return (
     <Box w="50%" display="flex" justifyContent="center" mt="10px" p="5px">
-      <Button
-        onClick={handleToggleFeed}
-        colorScheme={feedToggle === 'posts' ? 'red' : 'teal'}
-        variant="outline"
-        w="85px"
-        size="sm"
-      >
-        View {feedToggle === 'posts' ? 'Likes' : 'Posts'}
-      </Button>
+      {feedToggle === 'posts' ? (
+        <Button
+          onClick={handleToggleFeed}
+          bg="brand.500"
+          variant="outline"
+          w="95px"
+          fontSize="0.9rem"
+          shadow="md"
+          size="md"
+          color={'white'}
+          my="7px"
+          _hover={{
+            bg: 'brand.400',
+          }}
+        >
+          View Likes
+        </Button>
+      ) : (
+        <Button
+          onClick={handleToggleFeed}
+          bg="brand.300"
+          variant="outline"
+          w="95px"
+          fontSize="0.9rem"
+          shadow="md"
+          size="md"
+          color={'white'}
+          my="7px"
+          _hover={{
+            bg: 'brand.200',
+          }}
+        >
+          View Posts
+        </Button>
+      )}
     </Box>
   )
 }

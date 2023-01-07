@@ -8,7 +8,7 @@ import { BsHeart, BsFillHeartFill } from 'react-icons/bs'
 const Post = ({ post, users }) => {
   const { species, photo, weight, length, bait, location, _id, createdBy } =
     post
-
+  console.log(post)
   // getting user
   const { user, deletePost, likePost } = useContext(AppContext)
 

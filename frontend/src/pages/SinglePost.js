@@ -1,3 +1,4 @@
+import { Box } from '@chakra-ui/react'
 import SinglePostInterface from '../components/SinglePost/SinglePostInterface'
 
 const SinglePost = ({ setNav }) => {
@@ -5,9 +6,9 @@ const SinglePost = ({ setNav }) => {
   setNav(true)
 
   return (
-    <div>
+    <Box p="25px" bg="brand.100">
       <SinglePostInterface />
-    </div>
+    </Box>
   )
 }
 export default SinglePost

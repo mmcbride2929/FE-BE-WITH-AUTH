@@ -23,6 +23,7 @@ const Nav = ({ setNav }) => {
                 px="0px"
                 h="35px"
                 bg={'brand.500'}
+                shadow="md"
                 _hover={{
                   bg: 'brand.400',
                 }}
@@ -37,6 +38,7 @@ const Nav = ({ setNav }) => {
                 px="0px"
                 h="35px"
                 bg={'brand.500'}
+                shadow="md"
                 _hover={{
                   bg: 'brand.400',
                 }}

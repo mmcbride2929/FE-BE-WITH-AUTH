@@ -64,32 +64,22 @@ const Login = ({ setNav }) => {
   }, [user, navigate])
 
   return (
-    <Flex
-      minH={'100vh'}
-      align={'center'}
-      justify={'center'}
-      bg={useColorModeValue('gray.50', 'gray.800')}
-    >
+    <Flex minH={'100vh'} align={'center'} justify={'center'} bg="brand.100">
       <Stack spacing={8} mx={'auto'} py={12} px={6}>
         <Stack align={'center'}>
           <Heading fontSize={'4xl'} textAlign={'center'}>
             Login
           </Heading>
-          <Text fontSize={'lg'} color={'gray.600'}>
-            to enjoy all of our cool features ✌️
-          </Text>
+          <Text fontSize={'md'}>to enjoy all of our cool features</Text>
         </Stack>
-        <Box
-          rounded={'lg'}
-          bg={useColorModeValue('white', 'gray.700')}
-          boxShadow={'lg'}
-          p={8}
-        >
+        <Box rounded={'lg'} bg="white" boxShadow={'lg'} p={8}>
           <Stack spacing={4}>
             <form onSubmit={onSubmit}>
               {showAlert && <Alert />}
               <FormControl id="email" isRequired>
-                <FormLabel>Email address</FormLabel>
+                <FormLabel mt="6px" mb="1px">
+                  Email address
+                </FormLabel>
                 <Input
                   name="email"
                   type="email"
@@ -99,7 +89,9 @@ const Login = ({ setNav }) => {
                 />
               </FormControl>
               <FormControl id="password" isRequired>
-                <FormLabel>Password</FormLabel>
+                <FormLabel mt="6px" mb="1px">
+                  Password
+                </FormLabel>
                 <InputGroup>
                   <Input
                     name="password"
@@ -121,28 +113,27 @@ const Login = ({ setNav }) => {
                   </InputRightElement>
                 </InputGroup>
               </FormControl>
-
-              <Stack spacing={10} pt={2}>
+              <Box display="flex" justifyContent="center">
                 <Button
+                  mt="45px"
                   type="submit"
-                  disabled={isLoading}
-                  loadingText="Submitting"
-                  size="lg"
-                  bg={'brand.200'}
-                  _hover={{
-                    bg: 'brand.300',
-                  }}
+                  size="md"
                   color={'white'}
+                  bg={'brand.500'}
+                  shadow="md"
+                  _hover={{
+                    bg: 'brand.400',
+                  }}
                 >
                   Sign in
                 </Button>
-              </Stack>
+              </Box>
             </form>
-            <Stack pt={6}>
+            <Stack pt={1}>
               <Text align={'center'}>
                 Not a user?
                 <Link to="/register">
-                  <chakra.p color={'red'}>Register</chakra.p>
+                  <chakra.p color="brand.500">Register</chakra.p>
                 </Link>
               </Text>
             </Stack>

@@ -37,6 +37,7 @@ const UserGreeting = () => {
             color={'white'}
             bg={'brand.500'}
             my="7px"
+            shadow="md"
             _hover={{
               bg: 'brand.400',
             }}

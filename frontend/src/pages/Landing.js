@@ -1,5 +1,13 @@
-import { Box, Heading, Container, Text, Button, Stack } from '@chakra-ui/react'
-
+import {
+  Box,
+  Heading,
+  Container,
+  Text,
+  Button,
+  Stack,
+  Image,
+} from '@chakra-ui/react'
+import landingPhoto from '../assets/landing-page-art.png'
 import { Link } from 'react-router-dom'
 
 const Landing = ({ setNav }) => {
@@ -8,27 +16,52 @@ const Landing = ({ setNav }) => {
 
   return (
     <>
-      <Container maxW={'3xl'} bg="brand.100">
+      <Container p="25px" bg="brand.100" h="100%">
+        <Box textAlign="center" position="relative" mt="10px">
+          <Image src={landingPhoto} shadow="md" borderRadius="12px" />
+
+          <Heading
+            position="absolute"
+            w="100%"
+            top="10%"
+            left="0px"
+            fontWeight="bold"
+            color={'brand.100'}
+            textShadow="20px 10px 20px orange"
+            fontSize={{ base: '2.3rem', sm: '4xl', md: '6xl' }}
+          >
+            Fish
+            <Text as={'span'}>-Grid</Text>
+          </Heading>
+
+          <Heading
+            position="absolute"
+            textShadow="20px 10px 20px orange"
+            w="100%"
+            top="25%"
+            left="0px"
+            fontWeight="bold"
+            color={'brand.100'}
+            fontSize={{ base: '1.3rem', sm: '4xl', md: '6xl' }}
+          >
+            Cast, Catch, Share
+          </Heading>
+        </Box>
         <Stack
           as={Box}
           textAlign={'center'}
           spacing={{ base: 8, md: 14 }}
-          py={{ base: 20, md: 36 }}
+          py={{ base: 10, md: 18 }}
         >
-          <Heading
-            fontWeight={600}
-            fontSize={{ base: '2xl', sm: '4xl', md: '6xl' }}
-            lineHeight={'110%'}
+          <Text
+            px="30px"
+            color="black"
+            fontSize={{ base: '0.9rem', sm: '4xl', md: '6xl' }}
           >
-            Make money from <br />
-            <Text as={'span'} color={'green.400'}>
-              your audience
-            </Text>
-          </Heading>
-          <Text color={'gray.5100'}>
-            Monetize your content by charging your most loyal readers and reward
-            them loyalty points. Give back to your loyal readers by granting
-            them access to your pre-releases and sneak-peaks.
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. A explicabo
+            voluptatum odio dolorum corrupti adipisci similique delectus
+            accusamus ea nostrum aperiam, blanditiis consectetur ducimus magni.
+            placeat!
           </Text>
           <Stack
             direction={'column'}
@@ -39,10 +72,13 @@ const Landing = ({ setNav }) => {
           >
             <Link to="/login">
               <Button
-                bg={'brand.200'}
-                px={6}
+                size="md"
+                color={'white'}
+                bg={'brand.500'}
+                my="7px"
+                shadow="md"
                 _hover={{
-                  bg: 'brand.300',
+                  bg: 'brand.400',
                 }}
               >
                 Login/Register
