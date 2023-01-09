@@ -5,9 +5,6 @@ import { useContext, useEffect } from 'react'
 import AppContext from '../context/AppContext'
 
 const Landing = ({ setNav }) => {
-  // hiding navbar if not logged in
-  setNav(false)
-
   const navigate = useNavigate()
 
   // pulling global state from context
@@ -15,6 +12,8 @@ const Landing = ({ setNav }) => {
 
   /* *********** USER USEEFFECT ********** */
   useEffect(() => {
+    // hiding navbar if not logged in
+    setNav(true)
     if (user) {
       navigate('/feed')
     }

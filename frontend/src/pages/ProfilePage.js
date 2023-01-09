@@ -9,7 +9,6 @@ import UserPosts from '../components/UserProfile/UserPosts'
 import AppContext from '../context/AppContext'
 
 const ProfilePage = ({ setNav }) => {
-  setNav(true)
   const [user, setUser] = useState()
   const [loading, setLoading] = useState(true)
   const [formattedDate, setFormattedDate] = useState('')
@@ -39,6 +38,7 @@ const ProfilePage = ({ setNav }) => {
   }
 
   useEffect(() => {
+    setNav(true)
     fetchUser()
     setFeedToggle('posts')
     setLoading(false)

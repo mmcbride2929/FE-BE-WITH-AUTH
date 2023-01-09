@@ -22,9 +22,6 @@ import Alert from '../components/Alerts/Alert'
 const initialState = { email: '', password: '' }
 
 const Login = ({ setNav }) => {
-  // hiding navbar if not logged in
-  setNav(false)
-
   /* *********** LOCAL STATE ********** */
   // components/user values
   const [values, setValues] = useState(initialState)
@@ -56,6 +53,9 @@ const Login = ({ setNav }) => {
 
   /* *********** USER USEEFFECT ********** */
   useEffect(() => {
+    // hiding navbar if not logged in
+    setNav(false)
+
     if (user) {
       navigate('/feed')
     }
@@ -128,12 +128,12 @@ const Login = ({ setNav }) => {
               </Box>
             </form>
             <Stack pt={1}>
-              <Text align={'center'}>
+              <Box align={'center'}>
                 Not a user?
                 <Link to="/register">
                   <chakra.p color="brand.500">Register</chakra.p>
                 </Link>
-              </Text>
+              </Box>
             </Stack>
           </Stack>
         </Box>

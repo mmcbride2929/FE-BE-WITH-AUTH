@@ -18,6 +18,4 @@
 
 # MISC
 
-- to fix errors in cons
-
 # Questions
