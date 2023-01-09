@@ -7,16 +7,23 @@ const UserInterface = ({ user, formattedDate }) => {
 
   return user ? (
     <>
-      <Flex p={50} w="full">
+      <Box
+        py={50}
+        w="full"
+        display="flex"
+        flexDirection="column"
+        justifyContent="center"
+        alignItems="center"
+      >
         <Box
           w="100%"
+          maxWidth="350px"
           bg="white"
           border="1px"
           borderColor="silver"
           borderRadius="5px"
           shadow="md"
           overflow="hidden"
-          mx="auto"
         >
           <UserPhoto />
 
@@ -44,10 +51,12 @@ const UserInterface = ({ user, formattedDate }) => {
             <FeedToggleButton />
           </Box>
         </Box>
-      </Flex>
+      </Box>
     </>
   ) : (
-    <>LOADING</>
+    <Box display="flex" alignItems="center" justifyContent="center">
+      LOADING
+    </Box>
   )
 }
 export default UserInterface

@@ -7,7 +7,14 @@ const CreatePost = ({ setNav }) => {
   setNav(true)
 
   return (
-    <Box bg="brand.100" p="25px">
+    <Box
+      bg="brand.100"
+      p="25px"
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+    >
       <CreatePostHeader />
       <CreatePostInterface />
     </Box>

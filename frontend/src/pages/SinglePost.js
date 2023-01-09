@@ -6,7 +6,14 @@ const SinglePost = ({ setNav }) => {
   setNav(true)
 
   return (
-    <Box p="25px" bg="brand.100">
+    <Box
+      p="25px"
+      bg="brand.100"
+      minH="85vh"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+    >
       <SinglePostInterface />
     </Box>
   )

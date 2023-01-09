@@ -22,7 +22,7 @@ const App = () => {
       <ChakraProvider theme={myTheme}>
         <BrowserRouter>
           <Box minH="100vh" display="flex" flexDirection="column">
-            {nav && <Navbar />}
+            {nav && <Navbar setNav={setNav} />}
             <Routes>
               <Route
                 path="/feed"
@@ -36,18 +36,39 @@ const App = () => {
               <Route path="login" element={<Login setNav={setNav} />} />
               <Route path="register" element={<Register setNav={setNav} />} />
               <Route path="*" element={<Error setNav={setNav} />} />
-              <Route path="post/:id" element={<SinglePost setNav={setNav} />} />
+              <Route
+                path="post/:id"
+                element={
+                  <ProtectedRoute>
+                    <SinglePost setNav={setNav} />
+                  </ProtectedRoute>
+                }
+              />
+
               <Route
                 path="edit-post/:id"
-                element={<EditPost setNav={setNav} />}
+                element={
+                  <ProtectedRoute>
+                    <EditPost setNav={setNav} />
+                  </ProtectedRoute>
+                }
               />
               <Route
                 path="create-post"
-                element={<CreatePost setNav={setNav} />}
+                element={
+                  <ProtectedRoute>
+                    <CreatePost setNav={setNav} />
+                  </ProtectedRoute>
+                }
               />
               <Route
+                exact
                 path="user/:id"
-                element={<ProfilePage setNav={setNav} />}
+                element={
+                  <ProtectedRoute>
+                    <ProfilePage setNav={setNav} />
+                  </ProtectedRoute>
+                }
               />
             </Routes>
             <Footer />

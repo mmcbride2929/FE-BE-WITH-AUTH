@@ -78,6 +78,7 @@ export const AppProvider = ({ children }) => {
       })
       addUserToLocalStorage({ user, token })
     } catch (error) {
+      console.log(error)
       dispatch({
         type: REGISTER_USER_ERROR,
         payload: { msg: error.response.data.msg },

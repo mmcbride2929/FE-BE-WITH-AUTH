@@ -8,7 +8,8 @@ import UserLikes from '../components/UserProfile/UserLikes'
 import UserPosts from '../components/UserProfile/UserPosts'
 import AppContext from '../context/AppContext'
 
-const ProfilePage = () => {
+const ProfilePage = ({ setNav }) => {
+  setNav(true)
   const [user, setUser] = useState()
   const [loading, setLoading] = useState(true)
   const [formattedDate, setFormattedDate] = useState('')
@@ -39,11 +40,21 @@ const ProfilePage = () => {
 
   useEffect(() => {
     fetchUser()
+    setFeedToggle('posts')
     setLoading(false)
-  }, [])
+  }, [path])
 
   return !user ? (
-    <>LOADING</>
+    <Box
+      bg="brand.100"
+      p="25px"
+      minH="84vh"
+      display="flex"
+      alignItems="center"
+      justifyContent="center"
+    >
+      LOADING PROFILE
+    </Box>
   ) : (
     <Box bg="brand.100" p="25px" minH="84vh">
       <UserInterface user={user} formattedDate={formattedDate} />
@@ -51,7 +62,11 @@ const ProfilePage = () => {
       {/* toggle between users posts and likes */}
       <Box display="flex" alignItems="center">
         <Box w="100%">
-          <chakra.h1 textAlign="center" fontWeight="bold" fontSize="1.1rem">
+          <chakra.h1
+            textAlign="center"
+            fontWeight="bold"
+            fontSize={{ base: '1rem', sm: '1.1rem', md: '1.2rem' }}
+          >
             {user.userName}'s {feedToggle}
           </chakra.h1>
         </Box>

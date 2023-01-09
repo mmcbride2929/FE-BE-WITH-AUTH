@@ -7,6 +7,10 @@
 
 /* posts */
 .heart:hover {
+  fill: silver;
+}
+
+.no-like:hover {
   fill: red;
 }
 

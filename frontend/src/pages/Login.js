@@ -57,9 +57,7 @@ const Login = ({ setNav }) => {
   /* *********** USER USEEFFECT ********** */
   useEffect(() => {
     if (user) {
-      setTimeout(() => {
-        navigate('/feed')
-      }, 2000)
+      navigate('/feed')
     }
   }, [user, navigate])
 

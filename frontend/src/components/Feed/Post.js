@@ -1,4 +1,4 @@
-import { Link as ReachLink } from 'react-router-dom'
+import { Link as ReachLink, useNavigate } from 'react-router-dom'
 import { Box, IconButton, Image, Link, Text, chakra } from '@chakra-ui/react'
 import { useContext, useEffect, useState } from 'react'
 import AppContext from '../../context/AppContext'
@@ -8,7 +8,7 @@ import { BsHeart, BsFillHeartFill } from 'react-icons/bs'
 const Post = ({ post, users }) => {
   const { species, photo, weight, length, bait, location, _id, createdBy } =
     post
-  console.log(post)
+
   // getting user
   const { user, deletePost, likePost } = useContext(AppContext)
 
@@ -21,25 +21,19 @@ const Post = ({ post, users }) => {
 
   const matchUser = (postCreatorId) => {
     const postAuthor = users.filter((u) => u._id === postCreatorId)
-    console.log(postAuthor[0])
+
     setAuthor(postAuthor[0])
   }
 
   useEffect(() => {
-    // do we even need to have in if statement?
-    // can we just run match user?
-    console.log(createdBy)
     matchUser(createdBy)
-
     setLoading(false)
   }, [])
 
   return loading ? (
-    <>loading</>
-  ) : (
-    // entire container
     <Box
       w="100%"
+      maxWidth="350px"
       display="flex"
       flexDirection="column"
       bg="white"
@@ -47,6 +41,25 @@ const Post = ({ post, users }) => {
       borderColor="silver"
       borderRadius="5px"
       my="15px"
+      mb="40px"
+      shadow="md"
+      p={50}
+    >
+      LOADING POST
+    </Box>
+  ) : (
+    // entire container
+    <Box
+      w="100%"
+      maxWidth="350px"
+      display="flex"
+      flexDirection="column"
+      bg="white"
+      border="1px"
+      borderColor="silver"
+      borderRadius="5px"
+      my="15px"
+      mb="40px"
       shadow="md"
     >
       {/* Post Creator Username */}
@@ -91,7 +104,7 @@ const Post = ({ post, users }) => {
         ) : (
           <BsHeart
             display="inline"
-            className="icon"
+            className="icon no-like"
             size={'22px'}
             w="19px"
             color="silver"

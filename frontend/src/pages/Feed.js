@@ -1,4 +1,6 @@
 import { Box } from '@chakra-ui/react'
+
+import FeedTitle from '../components/Feed/FeedTitle'
 import Posts from '../components/Feed/Posts'
 
 import UserGreeting from '../components/Feed/UserGreeting'
@@ -9,8 +11,16 @@ const Feed = ({ setNav }) => {
 
   return (
     <>
-      <Box className="dashboard-interface" bg="brand.100" p="25px">
+      <Box
+        className="dashboard-interface"
+        bg="brand.100"
+        p="25px"
+        display="flex"
+        flexDirection="column"
+        alignItems="center"
+      >
         <UserGreeting />
+        <FeedTitle />
         <Posts />
       </Box>
     </>

@@ -1,6 +1,4 @@
-import { Box, chakra, Link, Button } from '@chakra-ui/react'
-
-import { Link as ReachLink } from 'react-router-dom'
+import { Box, chakra } from '@chakra-ui/react'
 
 const EditPostHeader = () => {
   return (
@@ -11,7 +9,10 @@ const EditPostHeader = () => {
       flexDirection="column"
       py={50}
     >
-      <chakra.h1 fontSize="1.5rem" fontWeight="bold">
+      <chakra.h1
+        fontSize={{ base: '1.6rem', sm: '1.75rem', md: '1.9rem' }}
+        fontWeight="bold"
+      >
         Edit Your Post
       </chakra.h1>
     </Box>

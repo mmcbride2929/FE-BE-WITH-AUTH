@@ -19,9 +19,7 @@ const register = asyncHandler(async (req, res) => {
   // creating user
   const user = await User.create({ userName, email, password })
   const token = user.createJWT()
-  res
-    .status(StatusCodes.OK)
-    .send({ user: { userName: user.userName, email: user.email }, token })
+  res.status(StatusCodes.OK).json({ user, token })
 })
 
 const login = asyncHandler(async (req, res) => {

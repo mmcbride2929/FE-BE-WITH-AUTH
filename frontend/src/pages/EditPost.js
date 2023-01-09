@@ -7,7 +7,14 @@ const EditPost = ({ setNav }) => {
   setNav(true)
 
   return (
-    <Box p="25px" bg="brand.100">
+    <Box
+      p="25px"
+      bg="brand.100"
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+      alignItems="center"
+    >
       <EditPostHeader />
       <EditPostInterface />
     </Box>

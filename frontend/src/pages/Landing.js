@@ -1,24 +1,48 @@
-import {
-  Box,
-  Heading,
-  Container,
-  Text,
-  Button,
-  Stack,
-  Image,
-} from '@chakra-ui/react'
+import { Box, Heading, chakra, Button, Stack, Image } from '@chakra-ui/react'
 import landingPhoto from '../assets/landing-page-art.png'
-import { Link } from 'react-router-dom'
+import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { useContext, useEffect } from 'react'
+import AppContext from '../context/AppContext'
 
 const Landing = ({ setNav }) => {
   // hiding navbar if not logged in
   setNav(false)
 
+  const navigate = useNavigate()
+
+  // pulling global state from context
+  const { user } = useContext(AppContext)
+
+  /* *********** USER USEEFFECT ********** */
+  useEffect(() => {
+    if (user) {
+      navigate('/feed')
+    }
+  }, [user, navigate])
+
   return (
     <>
-      <Container p="25px" bg="brand.100" h="100%">
-        <Box textAlign="center" position="relative" mt="10px">
-          <Image src={landingPhoto} shadow="md" borderRadius="12px" />
+      <Box
+        p="25px"
+        bg="brand.100"
+        h="93vh"
+        display="flex"
+        flexDirection="column"
+        justifyContent={{ base: 'center', sm: 'center' }}
+        alignItems="center"
+      >
+        <Box
+          textAlign="center"
+          position="relative"
+          mt={{ base: '10px', md: '25px' }}
+        >
+          <Image
+            src={landingPhoto}
+            shadow="md"
+            borderRadius="12px"
+            w={{ base: '330px', sm: '425px', md: '500px' }}
+            maxWidth="500px"
+          />
 
           <Heading
             position="absolute"
@@ -28,10 +52,9 @@ const Landing = ({ setNav }) => {
             fontWeight="bold"
             color={'brand.100'}
             textShadow="20px 10px 20px orange"
-            fontSize={{ base: '2.3rem', sm: '4xl', md: '6xl' }}
+            fontSize={{ base: '2.3rem', sm: '2.4rem', md: '2.5rem' }}
           >
-            Fish
-            <Text as={'span'}>-Grid</Text>
+            Fish-Grid
           </Heading>
 
           <Heading
@@ -42,27 +65,27 @@ const Landing = ({ setNav }) => {
             left="0px"
             fontWeight="bold"
             color={'brand.100'}
-            fontSize={{ base: '1.3rem', sm: '4xl', md: '6xl' }}
+            fontSize={{ base: '2rem', sm: '2.1rem' }}
           >
             Cast, Catch, Share
           </Heading>
         </Box>
-        <Stack
-          as={Box}
+        <Box
           textAlign={'center'}
-          spacing={{ base: 8, md: 14 }}
-          py={{ base: 10, md: 18 }}
+          w={{ base: '350px', sm: '425px', md: '500px' }}
         >
-          <Text
-            px="30px"
+          <chakra.p
+            px={{ base: '10px', md: '10px' }}
+            my={{ base: '30px', sm: '40px', md: '50px' }}
             color="black"
-            fontSize={{ base: '0.9rem', sm: '4xl', md: '6xl' }}
+            fontSize={{ base: '1rem', md: '1rem' }}
+            lineHeight={{ base: '25px', md: '30px' }}
           >
             Lorem ipsum dolor sit amet consectetur adipisicing elit. A explicabo
             voluptatum odio dolorum corrupti adipisci similique delectus
             accusamus ea nostrum aperiam, blanditiis consectetur ducimus magni.
             placeat!
-          </Text>
+          </chakra.p>
           <Stack
             direction={'column'}
             spacing={3}
@@ -75,7 +98,6 @@ const Landing = ({ setNav }) => {
                 size="md"
                 color={'white'}
                 bg={'brand.500'}
-                my="7px"
                 shadow="md"
                 _hover={{
                   bg: 'brand.400',
@@ -85,8 +107,8 @@ const Landing = ({ setNav }) => {
               </Button>
             </Link>
           </Stack>
-        </Stack>
-      </Container>
+        </Box>
+      </Box>
     </>
   )
 }

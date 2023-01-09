@@ -9,53 +9,54 @@ const Nav = ({ setNav }) => {
   const { logoutUser, user } = useContext(AppContext)
 
   return (
-    <>
-      <Box bg="white" px={4}>
-        <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
-          <Box>
-            <Link as={ReachLink} to="/feed">
-              <Image src={logo} />
-            </Link>
-          </Box>
-          <Flex alignItems={'center'}>
-            <Stack direction={'row'} spacing={4}>
-              <Button
-                px="0px"
-                h="35px"
-                bg={'brand.500'}
-                shadow="md"
-                _hover={{
-                  bg: 'brand.400',
-                }}
-              >
-                <Link as={ReachLink} to={`/user/${user._id}`}>
-                  <BsPersonFill size="20px" fill="white" />
-                </Link>
-              </Button>
-
-              <Button
-                onClick={logoutUser}
-                px="0px"
-                h="35px"
-                bg={'brand.500'}
-                shadow="md"
-                _hover={{
-                  bg: 'brand.400',
-                }}
-              >
+    user && (
+      <>
+        <Box bg="white" px={4}>
+          <Flex h={16} alignItems={'center'} justifyContent={'space-between'}>
+            <Box>
+              <Link as={ReachLink} to="/feed">
+                <Image src={logo} />
+              </Link>
+            </Box>
+            <Flex alignItems={'center'}>
+              <Stack direction={'row'} spacing={4}>
+                <Button
+                  px="0px"
+                  h="35px"
+                  bg={'brand.500'}
+                  shadow="md"
+                  _hover={{
+                    bg: 'brand.400',
+                  }}
+                >
+                  <Link as={ReachLink} to={`/user/${user._id}`}>
+                    <BsPersonFill size="20px" fill="white" />
+                  </Link>
+                </Button>
                 <Link as={ReachLink} to="/landing">
-                  <BsDoorOpen
-                    onClick={() => setNav(false)}
-                    size="20px"
-                    fill="white"
-                  />
+                  <Button
+                    onClick={logoutUser}
+                    px="0px"
+                    h="35px"
+                    bg={'brand.500'}
+                    shadow="md"
+                    _hover={{
+                      bg: 'brand.400',
+                    }}
+                  >
+                    <BsDoorOpen
+                      onClick={() => setNav(false)}
+                      size="20px"
+                      fill="white"
+                    />
+                  </Button>
                 </Link>
-              </Button>
-            </Stack>
+              </Stack>
+            </Flex>
           </Flex>
-        </Flex>
-      </Box>
-    </>
+        </Box>
+      </>
+    )
   )
 }
 

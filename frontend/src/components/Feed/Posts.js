@@ -1,3 +1,4 @@
+import { Box } from '@chakra-ui/react'
 import axios from 'axios'
 import { useContext, useEffect, useState } from 'react'
 import AppContext from '../../context/AppContext'
@@ -13,6 +14,9 @@ const Posts = () => {
     setUsers(data.data)
   }
 
+  // making a shallow copy of the state
+  const postsCopy = [...posts]
+
   useEffect(() => {
     fetchPosts()
     fetchUsers()
@@ -21,10 +25,12 @@ const Posts = () => {
   return (
     <>
       {users.length === 0 ? (
-        <>LOADING</>
+        <Box mt="25px" p={100} w="350px" bg="white">
+          LOADING POSTS
+        </Box>
       ) : (
         <div>
-          {posts.map((post) => {
+          {postsCopy.reverse().map((post) => {
             return <Post key={post._id} post={post} users={users} />
           })}
         </div>

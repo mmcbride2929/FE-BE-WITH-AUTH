@@ -1,3 +1,4 @@
+import { Box } from '@chakra-ui/react'
 import axios from 'axios'
 import { useContext, useEffect, useState } from 'react'
 import AppContext from '../../context/AppContext'
@@ -18,19 +19,25 @@ const UserLikes = ({ user }) => {
     fetchUsers()
     setLoading(false)
   }, [])
-
   return (
     <>
       {users.length === 0 ? (
-        <>LOADING</>
+        <Box p={50} display="flex" alignItems="center" justifyContent="center">
+          LOADING LIKES
+        </Box>
       ) : (
-        <div>
+        <Box
+          display="flex"
+          flexDirection="column"
+          justifyContent="center"
+          alignItems="center"
+        >
           {posts
             .filter((post) => user.likes.includes(post._id))
             .map((post) => {
               return <Post key={post._id} post={post} users={users} />
             })}
-        </div>
+        </Box>
       )}
     </>
   )

@@ -77,9 +77,13 @@ const CreatePostForm = () => {
       bg="white"
       p="25px"
       w="100%"
+      maxWidth="400px"
+      minWidth="350px"
       border="1px"
       borderColor="silver"
       borderRadius="5px"
+      shadow="md"
+      mb="45px"
     >
       <form onSubmit={handleSubmit}>
         <FormControl isRequired>
