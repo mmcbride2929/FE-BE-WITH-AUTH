@@ -1,4 +1,5 @@
-import { BrowserRouter, Route, Routes, Redirect } from 'react-router-dom'
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
+
 import { Box, ChakraProvider } from '@chakra-ui/react'
 import { myTheme } from './theme/theme'
 import Landing from './pages/Landing'
@@ -33,12 +34,11 @@ const App = () => {
                 }
               />
               <Route path="landing" element={<Landing setNav={setNav} />} />
+              <Route exact path="/" element={<Landing setNav={setNav} />} />
               <Route path="login" element={<Login setNav={setNav} />} />
               <Route path="register" element={<Register setNav={setNav} />} />
               <Route path="*" element={<Error setNav={setNav} />} />
-              <Route exact path="/">
-                <Redirect to="/landing" />
-              </Route>
+
               <Route
                 path="post/:id"
                 element={
