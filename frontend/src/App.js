@@ -36,6 +36,9 @@ const App = () => {
               <Route path="login" element={<Login setNav={setNav} />} />
               <Route path="register" element={<Register setNav={setNav} />} />
               <Route path="*" element={<Error setNav={setNav} />} />
+              <Route exact path="/">
+                <Redirect to="/landing" />
+              </Route>
               <Route
                 path="post/:id"
                 element={
