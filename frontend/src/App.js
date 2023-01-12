@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes, Link } from 'react-router-dom'
+import { BrowserRouter, Route, Routes, Redirect } from 'react-router-dom'
 import { Box, ChakraProvider } from '@chakra-ui/react'
 import { myTheme } from './theme/theme'
 import Landing from './pages/Landing'
