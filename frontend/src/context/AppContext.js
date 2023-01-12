@@ -142,7 +142,7 @@ export const AppProvider = ({ children }) => {
       const data = await axios.get(
         `https://fish-grid-production.up.railway.app/api/v1/posts`
       )
-
+      console.log('notification')
       setPosts(data.data)
     } catch (error) {
       console.log(error)
