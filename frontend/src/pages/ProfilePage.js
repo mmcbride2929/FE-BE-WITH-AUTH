@@ -20,7 +20,9 @@ const ProfilePage = ({ setNav }) => {
   const path = location.pathname.split('/')[2]
 
   const fetchUser = async () => {
-    const data = await axios.get(`http://localhost:2121/api/v1/user/${path}`)
+    const data = await axios.get(
+      `https://fish-grid-production.up.railway.app/api/v1/user/${path}`
+    )
     setUser(data.data)
     formatDate(data.data.createdAt)
   }

@@ -67,7 +67,7 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: REGISTER_USER_BEGIN })
     try {
       const response = await axios.post(
-        'http://localhost:2121/api/v1/auth/register',
+        'https://fish-grid-production.up.railway.app/api/v1/auth/register',
         currentUser
       )
       const { user, token } = response.data
@@ -91,7 +91,7 @@ export const AppProvider = ({ children }) => {
     dispatch({ type: LOGIN_USER_BEGIN })
     try {
       const response = await axios.post(
-        'http://localhost:2121/api/v1/auth/login',
+        'https://fish-grid-production.up.railway.app/api/v1/auth/login',
         currentUser
       )
 
@@ -119,7 +119,10 @@ export const AppProvider = ({ children }) => {
 
   const createPost = async (post) => {
     try {
-      await authFetch.post('http://localhost:2121/api/v1/posts', post)
+      await authFetch.post(
+        'https://fish-grid-production.up.railway.app/api/v1/posts',
+        post
+      )
 
       dispatch({
         type: CREATE_POST_SUCCESS,
@@ -136,7 +139,9 @@ export const AppProvider = ({ children }) => {
 
   const fetchPosts = async () => {
     try {
-      const data = await axios.get(`http://localhost:2121/api/v1/posts`)
+      const data = await axios.get(
+        `https://fish-grid-production.up.railway.app/api/v1/posts`
+      )
 
       setPosts(data.data)
     } catch (error) {
@@ -146,7 +151,10 @@ export const AppProvider = ({ children }) => {
 
   const updatePost = async (post, path) => {
     try {
-      await authFetch.patch(`http://localhost:2121/api/v1/posts/${path}`, post)
+      await authFetch.patch(
+        `https://fish-grid-production.up.railway.app/api/v1/posts/${path}`,
+        post
+      )
 
       dispatch({
         type: UPDATE_POST_SUCCESS,
@@ -162,7 +170,9 @@ export const AppProvider = ({ children }) => {
 
   const deletePost = async (path) => {
     try {
-      await authFetch.delete(`http://localhost:2121/api/v1/posts/${path}`)
+      await authFetch.delete(
+        `https://fish-grid-production.up.railway.app/api/v1/posts/${path}`
+      )
 
       dispatch({
         type: DELETE_POST_SUCCESS,
@@ -187,7 +197,7 @@ export const AppProvider = ({ children }) => {
       try {
         // sending updated user with added post
         await authFetch.patch(
-          `http://localhost:2121/api/v1/user/${currentUser._id}`,
+          `https://fish-grid-production.up.railway.app/api/v1/user/${currentUser._id}`,
           currentUser
         )
         dispatch({
@@ -209,7 +219,7 @@ export const AppProvider = ({ children }) => {
 
       try {
         await authFetch.patch(
-          `http://localhost:2121/api/v1/user/${currentUser._id}`,
+          `https://fish-grid-production.up.railway.app/api/v1/user/${currentUser._id}`,
           currentUser
         )
         dispatch({

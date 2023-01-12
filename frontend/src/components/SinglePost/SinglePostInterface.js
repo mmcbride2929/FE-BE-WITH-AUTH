@@ -22,7 +22,9 @@ const SinglePostInterface = () => {
 
   const fetchPost = async () => {
     try {
-      const data = await axios.get(`http://localhost:2121/api/v1/posts/${path}`)
+      const data = await axios.get(
+        `https://fish-grid-production.up.railway.app/api/v1/posts/${path}`
+      )
       setPost(data.data)
 
       getAuthor(data.data.createdBy)
@@ -33,7 +35,7 @@ const SinglePostInterface = () => {
 
   const getAuthor = async (createdBy) => {
     const response = await axios.get(
-      `http://localhost:2121/api/v1/user/${createdBy}`
+      `https://fish-grid-production.up.railway.app/api/v1/user/${createdBy}`
     )
     setAuthor([response.data])
   }

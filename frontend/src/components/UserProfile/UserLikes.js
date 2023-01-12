@@ -10,7 +10,9 @@ const UserLikes = ({ user }) => {
   const [loading, setLoading] = useState(true)
 
   const fetchUsers = async () => {
-    const data = await axios.get(`http://localhost:2121/api/v1/user`)
+    const data = await axios.get(
+      `https://fish-grid-production.up.railway.app/api/v1/user`
+    )
     setUsers(data.data)
   }
 
@@ -22,7 +24,13 @@ const UserLikes = ({ user }) => {
   return (
     <>
       {users.length === 0 ? (
-        <Box p={50} display="flex" alignItems="center" justifyContent="center">
+        <Box
+          p={50}
+          display="flex"
+          alignItems="center"
+          mt="45px"
+          justifyContent="center"
+        >
           LOADING LIKES
         </Box>
       ) : (

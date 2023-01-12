@@ -30,7 +30,9 @@ const EditPostForm = () => {
 
   const fetchPost = async () => {
     try {
-      const data = await axios.get(`http://localhost:2121/api/v1/posts/${path}`)
+      const data = await axios.get(
+        `https://fish-grid-production.up.railway.app/api/v1/posts/${path}`
+      )
       setValues(data.data)
       setLoading(false)
     } catch (error) {

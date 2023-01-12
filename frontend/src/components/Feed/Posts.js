@@ -10,7 +10,9 @@ const Posts = () => {
   const { fetchPosts, posts } = useContext(AppContext)
 
   const fetchUsers = async () => {
-    const data = await axios.get(`http://localhost:2121/api/v1/user`)
+    const data = await axios.get(
+      `https://fish-grid-production.up.railway.app/api/v1/user`
+    )
     setUsers(data.data)
   }
 
