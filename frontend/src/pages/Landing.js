@@ -10,7 +10,7 @@ const Landing = ({ setNav }) => {
   // pulling global state from context
   const { user } = useContext(AppContext)
 
-  /* *********** USER USEEFFECT ********** */
+  /* ***********  USE EFFECT ********** */
   useEffect(() => {
     // hiding navbar if not logged in
     setNav(true)
@@ -24,7 +24,7 @@ const Landing = ({ setNav }) => {
       <Box
         p="25px"
         bg="brand.100"
-        h="93vh"
+        minH="93vh"
         display="flex"
         flexDirection="column"
         justifyContent={{ base: 'center', sm: 'center' }}
